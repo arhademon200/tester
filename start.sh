@@ -25,5 +25,5 @@ while read line; do
     #echo -e "$pLength\n"
     
 done <$file 
-touch wynik.txt
-echo  "`./permutacje/main.c $parameters` "  >> ./permutacje/wynik.txt 
+wynik = `./permutacje/main.c $parameters`
+echo $wynik
