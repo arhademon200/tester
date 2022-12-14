@@ -4,9 +4,10 @@
 #include<time.h>
 #include<stdbool.h>
 #include<ctype.h>
+#include<string.h>
 
-int main(int x)
-{
+int main(int argc, const char *const *argv[]){
+	int x=argv[1]
 	int y = 1;
 	int zbior[x];
 
@@ -58,5 +59,4 @@ int main(int x)
 		printf("%d ", permutacja[i]);
 	}
 	printf("\n");
-	return 0;
 }
