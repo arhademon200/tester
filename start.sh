@@ -25,5 +25,5 @@ while read line; do
     #echo -e "$pLength\n"
     
 done <$file 
-wynik = `./permutacje/main.c $parameters`
-echo $wynik
+chmod 777 ./main.c
+echo -e "`./main.c ${parameters[1]}`"
