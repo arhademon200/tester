@@ -24,6 +24,13 @@ while read line; do
     #echo -e "$amount\n"
     #echo -e "$pLength\n"
     
-done <$file 
+done <$file
+
+
+chmod 777 CMakeLists.txt
+cmake
+make 
 chmod 777 ./main.c
+
+
 echo -e "`./main.c ${parameters[1]}`"
