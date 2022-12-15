@@ -28,7 +28,7 @@ done <$file
 
 
 chmod 777 CMakeLists.txt
-cmake
+cmake .
 make 
 chmod 777 ./main.c
 
