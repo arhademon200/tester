@@ -59,6 +59,3 @@ int dlugosc = atoi(argv[1]);
 
 	return 0;
 }
-
-
-
