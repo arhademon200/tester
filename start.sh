@@ -38,6 +38,8 @@ while read line; do
     for ((i=0;i<$ilo;i++))
     do
     org=`./main ${parameters[0]}`
+    cycle=`./cycle ${parameters[0]} ${org}`
+
     
     echo "\begin{tabular}{|c|c|}">>./final.tex
     echo "\toprule">>./final.tex
@@ -47,7 +49,7 @@ while read line; do
     echo "\midrule">>./final.tex
     echo "Podstawowa & ($org) \\\\">>./final.tex
     echo "\midrule">>./final.tex
-    echo "Podstawowa & `./cycle ${parameters[0]} '$org'` \\\\">>./final.tex
+    echo "Podstawowa & $cycle \\\\">>./final.tex
     
     
     echo "\bottomrule">>./final.tex
