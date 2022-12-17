@@ -51,12 +51,12 @@ int dlugosc = atoi(argv[1]);
 	}
 	
 
-	printf("( ",
+
 		for (int i = 0; i < x; i++) 
 	{
 		printf("%d ", permutacja[i]);
 	}
-	printf(")",
+
 	return 0;
 }
 
