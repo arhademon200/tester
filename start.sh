@@ -31,14 +31,22 @@ while read line; do
     done
     dlug+=(${parameters[0]})
     ilo+=(${parameters[1]})
+    
+    for ((i=0;i<$ilo;i++))
+    do
+    
     echo "\begin{tabular}{|c|c|}">>./final.tex
     echo "\toprule">>./final.tex
     echo "Typ permutacji & Permutacja \\\\">>./final.tex
     
+    
     echo "\midrule">>./final.tex
-    echo "Podstawowa & `./main ${parameters[0]} ${parameters[1]}` \\\\">>./final.tex
+    echo "Podstawowa & `./main ${parameters[0]}` \\\\">>./final.tex
+    
     
     echo "\bottomrule">>./final.tex
     echo "\end{tabular}">>./final.tex
+    
+    done
 done <$file 
 echo "\end{document}">>./final.tex
