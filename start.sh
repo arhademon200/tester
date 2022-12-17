@@ -1,12 +1,14 @@
 #!/bin/bash
-#mkdir make
-#cd make
-chmod 777 CMakeLists.txt
-cmake .
-make 
-chmod 777 ./main
 
+#chmod 777 CMakeLists.txt
+#cmake .
+#make 
+#chmod 777 ./main
+pl=./final.tex
+if ! [ -e $pl ]
+then	
 rm final.tex
+fi
 touch final.tex
 chmod 777 final.tex
 
@@ -27,18 +29,15 @@ while read line; do
     #echo -e "$line\n"
     for value in $line; do
         parameters+=($value)
-        let $amount++
-        if [![$amount -eq 2]]
-        do
-        echo "Za duzo lub za malo argumentow\n"
-        end
-        fi
+        let amount++
     done
+    
     dlug+=(${parameters[0]})
     ilo+=(${parameters[1]})
     
     for ((i=0;i<$ilo;i++))
     do
+    org=`./main ${parameters[0]}`
     
     echo "\begin{tabular}{|c|c|}">>./final.tex
     echo "\toprule">>./final.tex
@@ -46,12 +45,14 @@ while read line; do
     
     
     echo "\midrule">>./final.tex
-    echo "Podstawowa & `./main ${parameters[0]}` \\\\">>./final.tex
+    echo "Podstawowa & ($org) \\\\">>./final.tex
+    echo "\midrule">>./final.tex
+    echo "Podstawowa & `./cycle ${parameters[0]} '$org'` \\\\">>./final.tex
     
     
     echo "\bottomrule">>./final.tex
     echo "\end{tabular}">>./final.tex
     
     done
-done <$file 
+done < $file 
 echo "\end{document}">>./final.tex
