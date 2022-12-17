@@ -4,11 +4,10 @@
 #cmake .
 #make 
 #chmod 777 ./main
-pl=./final.tex
-if ! [ -e $pl ]
-then	
+
+	
 rm final.tex
-fi
+
 touch final.tex
 chmod 777 final.tex
 
@@ -49,7 +48,7 @@ while read line; do
     echo "\midrule">>./final.tex
     echo "Podstawowa & ($org) \\\\">>./final.tex
     echo "\midrule">>./final.tex
-    echo "Podstawowa & $cycle \\\\">>./final.tex
+    echo "Cykl & $cycle \\\\">>./final.tex
     
     
     echo "\bottomrule">>./final.tex
