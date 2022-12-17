@@ -5,13 +5,21 @@ chmod 777 CMakeLists.txt
 cmake .
 make 
 chmod 777 ./main
-#touch 1.conf
-#echo "3" >> 1.conf
-#echo "10 7" >> 1.conf
-#echo "5 11" >> 1.conf
-#echo "6 8" >> 1.conf
+
+rm final.tex
+touch final.tex
+chmod 777 final.tex
+
+echo "\documentclass{article}">>./final.tex
+echo "\usepackage[T1]{fontenc}">>./final.tex
+echo "\usepackage{array}">>./final.tex
+echo "\usepackage{booktabs}">>./final.tex
+echo "\begin{document}">>./final.tex
+
 file="1.conf"
 while read line; do
+
+    echo "\section{permutacja}">>./final.tex
     parameters=()
     dlug=()
     amount=0
@@ -23,5 +31,14 @@ while read line; do
     done
     dlug+=(${parameters[0]})
     ilo+=(${parameters[1]})
-    echo "`./main ${parameters[0]} ${parameters[1]} }`"
+    echo "\begin{tabular}{|c|c|}">>./final.tex
+    echo "\toprule">>./final.tex
+    echo "Typ permutacji & Permutacja \\\\">>./final.tex
+    
+    echo "\midrule">>./final.tex
+    echo "Podstawowa & `./main ${parameters[0]} ${parameters[1]}` \\\\">>./final.tex
+    
+    echo "\bottomrule">>./final.tex
+    echo "\end{tabular}">>./final.tex
 done <$file 
+echo "\end{document}">>./final.tex
