@@ -27,7 +27,12 @@ while read line; do
     #echo -e "$line\n"
     for value in $line; do
         parameters+=($value)
-        let amount++
+        let $amount++
+        if [$amount]
+        do
+        echo "Za duzo lub za malo argumentow\n"
+        end
+        fi
     done
     dlug+=(${parameters[0]})
     ilo+=(${parameters[1]})
