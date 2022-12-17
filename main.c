@@ -13,7 +13,6 @@ printf("%s",argv[1]);
 */
 
 int dlugosc = atoi(argv[1]);
-int ilosc = atoi(argv[2]);
 //printf("%d",dlugosc);
 //printf("%d",ilosc);
 
