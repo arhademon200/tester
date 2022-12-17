@@ -28,7 +28,7 @@ while read line; do
     for value in $line; do
         parameters+=($value)
         let $amount++
-        if [$amount]
+        if [![$amount -eq 2]]
         do
         echo "Za duzo lub za malo argumentow\n"
         end
