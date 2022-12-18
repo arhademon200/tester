@@ -4,7 +4,8 @@ then
 	echo "Nie mozna znalesc pliku konfiguracyjnego 1.conf"
 	exit 2
 fi
-needed_files=("cycle" "main" "next" "order" "parity" "previous" "square" "twoline")
+needed_files=("cycle.c" "main.c" "next.c" "order.c" "parity.c" "previous.c" "square.c" "twoline.c") 
+for need in ${needed_files[@]}
 do
 	if ! [ -e $need ]
 	then
@@ -63,7 +64,7 @@ while read line; do
     #echo "$ran"
     org=`./main ${parameters[0]} ${ran}`
     
-    echo "subsection{permutacja}">>./final.tex
+    echo "subsection{permutacja}"
     echo "\begin{tabular}{|c|c|}">>./final.tex
     echo "\toprule">>./final.tex
     echo "Typ permutacji & Permutacja \\\\">>./final.tex
@@ -72,19 +73,19 @@ while read line; do
     echo "\midrule">>./final.tex
     echo "Podstawowa & ($org) \\\\">>./final.tex
     echo "\midrule">>./final.tex
+    echo "Dwuliniowa & \begin{equation*} \left(\begin{array}{@{}*{20}{c@{}}}`./twoline ${parameters[0]} $org`\end{array}\right) \end{equation*} \\\\">>./final.tex
+    echo "\midrule">>./final.tex
     echo "Cykliczna & `./cycle ${parameters[0]} $org` \\\\">>./final.tex
      echo "\midrule">>./final.tex
-    echo "Dwu liniowa & \begin{equation*} \left(\begin{array}{@{}*{20}{c@{}}}`./twoline ${parameters[0]} $org`\end{array}\right) \end{equation*} \\\\">>./final.tex
-     echo "\midrule">>./final.tex
-    echo "Kwadratowa & `./square ${parameters[0]} $org` \\\\">>./final.tex
+    echo "Kwadrat & `./square ${parameters[0]} $org` \\\\">>./final.tex
      echo "\midrule">>./final.tex
     echo "Nastepna & `./next ${parameters[0]} $org` \\\\">>./final.tex
      echo "\midrule">>./final.tex
     echo "Poprzednia & `./previous ${parameters[0]} $org` \\\\">>./final.tex
      echo "\midrule">>./final.tex
-    echo "Parzysta & `./parity ${parameters[0]} $org` \\\\">>./final.tex
+    echo "Parzystosc & `./parity ${parameters[0]} $org` \\\\">>./final.tex
      echo "\midrule">>./final.tex
-    echo "Kolejnosciowa & `./order ${parameters[0]} $org` \\\\">>./final.tex
+    echo "Rzad & `./order ${parameters[0]} $org` \\\\">>./final.tex
     
     echo "\bottomrule">>./final.tex
     echo "\end{tabular}">>./final.tex
