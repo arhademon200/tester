@@ -36,11 +36,11 @@ printf("%s",argv[1]);
 			break;
 		}
 		
-		else if(zbior[k-1] > zbior[k])
+		else if(permutacja[k-1] > permutacja[k])
 		{   
-			int tmp = zbior[k];
-			zbior[k] = zbior[k-1];
-			zbior[k-1] = tmp;
+			int tmp = permutacja[k];
+			permutacja[k] = permutacja[k-1];
+			permutacja[k-1] = tmp;
 			break;
 		}
 		k--;
@@ -52,7 +52,7 @@ printf("%s",argv[1]);
     {
 		for (int i = 0; i < x; i++) 
 		{
-			printf("%d ", zbior[i]);
+			printf("%d ", permutacja[i]);
 		}
 	}
 }	
