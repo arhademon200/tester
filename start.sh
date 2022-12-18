@@ -63,7 +63,7 @@ while read line; do
     #echo "$ran"
     org=`./main ${parameters[0]} ${ran}`
     
-    echo "\subsection{Permutacja ($org)}"
+    echo "\subsection{Permutacja ($org)}">>./final.tex
     echo "\begin{tabular}{|c|c|}">>./final.tex
     echo "\toprule">>./final.tex
     echo "Typ permutacji & Permutacja \\\\">>./final.tex
