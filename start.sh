@@ -64,7 +64,7 @@ while read line; do
     echo "\midrule">>./final.tex
     echo "Cykliczna & `./cycle ${parameters[0]} $org` \\\\">>./final.tex
      echo "\midrule">>./final.tex
-    echo "Dwu liniowa & `./twoline ${parameters[0]} $org` \\\\">>./final.tex
+    echo "Dwu liniowa & \begin{equation*} \left(begin{array}{@{}*{20}{c@{}}}`./twoline ${parameters[0]} $org`\end{array}\right) \end{equation*} \\\\">>./final.tex
     
     
     echo "\bottomrule">>./final.tex
