@@ -62,7 +62,9 @@ while read line; do
     echo "\midrule">>./final.tex
     echo "Podstawowa & ($org) \\\\">>./final.tex
     echo "\midrule">>./final.tex
-    echo "Podstawowa & `./cycle ${parameters[0]} $org` \\\\">>./final.tex
+    echo "Cykliczna & `./cycle ${parameters[0]} $org` \\\\">>./final.tex
+     echo "\midrule">>./final.tex
+    echo "Dwu liniowa & `./twoline ${parameters[0]} $org` \\\\">>./final.tex
     
     
     echo "\bottomrule">>./final.tex
