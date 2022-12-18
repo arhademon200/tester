@@ -23,6 +23,7 @@ chmod 777 final.tex
 echo "\documentclass{article}">>./final.tex
 echo "\usepackage[T1]{fontenc}">>./final.tex
 echo "\usepackage{array}">>./final.tex
+echo "\usepackage[margin=10pt]{geometry}">>./final.tex
 echo "\usepackage{booktabs}">>./final.tex
 echo "\usepackage{amsmath}">>./final.tex
 echo "\begin{document}">>./final.tex
