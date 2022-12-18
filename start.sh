@@ -4,6 +4,15 @@ then
 	echo "Nie mozna znalesc pliku konfiguracyjnego 1.conf"
 	exit 2
 fi
+needed_files=("cycle.c" "main.c" "next.c" "order.c" "parity.c" "previous.c" "square.c" "twoline.c") 
+for need in $ {needed_files[@]}
+do
+	if ! [ -e $need ]
+	then
+		echo "Nie mozna znalesc wymaganego pliku $need"
+		exit 4
+	fi
+done
 if [ -a ./final.tex ]
 then
 	rm final.tex
