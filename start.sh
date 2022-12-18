@@ -29,8 +29,6 @@ echo "\begin{document}">>./final.tex
 
 file="1.conf"
 while read line; do
-
-    echo "\section{permutacja}">>./final.tex
     parameters=()
     dlug=()
     amount=0
@@ -61,10 +59,11 @@ while read line; do
     for ((i=0;i<$ilo;i++))
     do
     ran=$RANDOM
+    echo "\section{Permutacje zbioru $dlug -elementowego}">>./final.tex
     #echo "$ran"
     org=`./main ${parameters[0]} ${ran}`
     
-    echo "\subsection{permutacja}"
+    echo "\subsection{Permutacja ($org)}"
     echo "\begin{tabular}{|c|c|}">>./final.tex
     echo "\toprule">>./final.tex
     echo "Typ permutacji & Permutacja \\\\">>./final.tex
