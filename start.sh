@@ -4,8 +4,7 @@ then
 	echo "Nie mozna znalesc pliku konfiguracyjnego 1.conf"
 	exit 2
 fi
-needed_files=("cycle.c" "main.c" "next.c" "order.c" "parity.c" "previous.c" "square.c" "twoline.c") 
-for need in ${needed_files[@]}
+needed_files=("cycle" "main" "next" "order" "parity" "previous" "square" "twoline")
 do
 	if ! [ -e $need ]
 	then
@@ -77,7 +76,7 @@ while read line; do
      echo "\midrule">>./final.tex
     echo "Dwu liniowa & \begin{equation*} \left(\begin{array}{@{}*{20}{c@{}}}`./twoline ${parameters[0]} $org`\end{array}\right) \end{equation*} \\\\">>./final.tex
      echo "\midrule">>./final.tex
-    echo "Kwadratowa & `./squere ${parameters[0]} $org` \\\\">>./final.tex
+    echo "Kwadratowa & `./square ${parameters[0]} $org` \\\\">>./final.tex
      echo "\midrule">>./final.tex
     echo "Nastepna & `./next ${parameters[0]} $org` \\\\">>./final.tex
      echo "\midrule">>./final.tex
