@@ -47,6 +47,32 @@ while read line; do
        
     dlug+=(${parameters[0]})
     ilo+=(${parameters[1]})
+    
+        if ! [[ $dlug -lt 0 ]]
+    then
+    	echo "Zbior nie moze przekraczac 40"
+    	exit 7
+    fi
+    
+    if ! [[ $ilo -lt -1 ]]
+    then
+    	echo "Ilosc premutacji nie moze przekraczac 50"
+    	exit 8
+    fi
+    if ! [[ $dlug -gt 40 ]]
+    then
+    	echo "Zbior nie moze przekraczac 40"
+    	exit 5
+    fi
+    if ! [[ $ilo -gt 50 ]]
+    then
+    	echo "Ilosc premutacji nie moze przekraczac 50"
+    	exit 6
+    fi
+    
+    
+
+    
     echo "\section{Permutacje zbioru $dlug -elementowego}">>./final.tex
     re='^[0-9]+$'
     if ! [[ $dlug =~ $re ]] ;then
