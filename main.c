@@ -1,6 +1,3 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<math.h>
 #include<time.h>
 #include<stdbool.h>
 #include<ctype.h>
@@ -13,6 +10,7 @@ printf("%s",argv[1]);
 */
 
 int dlugosc = atoi(argv[1]);
+int random = atoi(argv[2]);
 //printf("%d",dlugosc);
 //printf("%d",ilosc);
 
@@ -35,8 +33,7 @@ int dlugosc = atoi(argv[1]);
 	{
 
 		srand(time(NULL));	
-    	int l = rand() % (cnt1 + 1);
-
+    	int r = rand() % (cnt1 + 1);
 		permutacja[i] = zbior[l];
 		
 		int j = l;
@@ -51,11 +48,11 @@ int dlugosc = atoi(argv[1]);
 	}
 	
 
-
-		for (int i = 0; i < x; i++) 
+	
+		for (int i = 0; i < x-1; i++) 
 	{
 		printf("%d ", permutacja[i]);
 	}
-
+	printf("%d", permutacja[x-1]);
 	return 0;
 }
