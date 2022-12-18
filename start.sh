@@ -23,7 +23,7 @@ chmod 777 final.tex
 echo "\documentclass{article}">>./final.tex
 echo "\usepackage[T1]{fontenc}">>./final.tex
 echo "\usepackage{array}">>./final.tex
-echo "\usepackage[margin=10pt]{geometry}">>./final.tex
+echo "\usepackage[margin=5pt]{geometry}">>./final.tex
 echo "\usepackage{booktabs}">>./final.tex
 echo "\usepackage{amsmath}">>./final.tex
 echo "\begin{document}">>./final.tex
@@ -66,7 +66,7 @@ while read line; do
     echo "\subsection{Permutacja ($org)}">>./final.tex
     echo "\begin{tabular}{|c|c|}">>./final.tex
     echo "\toprule">>./final.tex
-    echo "Typ permutacji & Permutacja \\\\">>./final.tex
+    echo "Typ & Permutacja \\\\">>./final.tex
     
     
     echo "\midrule">>./final.tex
