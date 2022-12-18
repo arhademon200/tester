@@ -1,5 +1,13 @@
 #!/bin/bash
-rm final.tex
+if ! [ -e ./1.conf ]
+then
+	echo "Nie mozna znalesc pliku konfiguracyjnego 1.conf"
+	exit 2
+fi
+if [ -a ./final.tex ]
+then
+	rm final.tex
+fi
 touch final.tex
 chmod 777 final.tex
 
@@ -22,14 +30,28 @@ while read line; do
         parameters+=($value)
         let amount++
     done
-    
+    if ! [ $amount -eq 2 ]
+    then
+    	echo "Liczba parametrow jset wieksza lub mniejsza niz 2"
+    	exit 1
+    fi
+       
     dlug+=(${parameters[0]})
     ilo+=(${parameters[1]})
     
+    re='^[0-9]+$'
+    if ! [[ $dlug =~ $re ]] ;then
+    	echo "$dlug nie jest numerem"
+    	exit 3
+    fi
+    if ! [[ $ilo =~ $re ]] ;then
+    	echo "$ilo nie jest numerem"
+    	exit 3
+    fi
     for ((i=0;i<$ilo;i++))
     do
     ran=$RANDOM
-    #echo "$ran"
+    echo "$ran"
     org=`./main ${parameters[0]} ${ran}`
     
     echo "\begin{tabular}{|c|c|}">>./final.tex
