@@ -52,9 +52,10 @@ while read line; do
     for ((i=0;i<$ilo;i++))
     do
     ran=$RANDOM
-    echo "$ran"
+    #echo "$ran"
     org=`./main ${parameters[0]} ${ran}`
     
+    echo "subsection{permutacja}"
     echo "\begin{tabular}{|c|c|}">>./final.tex
     echo "\toprule">>./final.tex
     echo "Typ permutacji & Permutacja \\\\">>./final.tex
