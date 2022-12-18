@@ -66,7 +66,16 @@ while read line; do
     echo "Cykliczna & `./cycle ${parameters[0]} $org` \\\\">>./final.tex
      echo "\midrule">>./final.tex
     echo "Dwu liniowa & \begin{equation*} \left(\begin{array}{@{}*{20}{c@{}}}`./twoline ${parameters[0]} $org`\end{array}\right) \end{equation*} \\\\">>./final.tex
-    
+     echo "\midrule">>./final.tex
+    echo "Kwadratowa & `./squere ${parameters[0]} $org` \\\\">>./final.tex
+     echo "\midrule">>./final.tex
+    echo "Nastepna & `./next ${parameters[0]} $org` \\\\">>./final.tex
+     echo "\midrule">>./final.tex
+    echo "Poprzednia & `./previous ${parameters[0]} $org` \\\\">>./final.tex
+     echo "\midrule">>./final.tex
+    echo "Parzysta & `./parity ${parameters[0]} $org` \\\\">>./final.tex
+     echo "\midrule">>./final.tex
+    echo "Kolejnosciowa & `./order ${parameters[0]} $org` \\\\">>./final.tex
     
     echo "\bottomrule">>./final.tex
     echo "\end{tabular}">>./final.tex
