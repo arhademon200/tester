@@ -70,11 +70,11 @@ while read line; do
     
     
     echo "\midrule">>./final.tex
-    echo "Podstawowa & ($org) \\\\">>./final.tex
+    echo "Zapis jednolinowy & ($org) \\\\">>./final.tex
     echo "\midrule">>./final.tex
-    echo "Dwuliniowa & \begin{equation*} \left(\begin{array}{@{}*{20}{c@{}}}`./twoline ${parameters[0]} $org`\end{array}\right) \end{equation*} \\\\">>./final.tex
+    echo "Zapis dwuliniowy & \begin{equation*} \left(\begin{array}{@{}*{20}{c@{}}}`./twoline ${parameters[0]} $org`\end{array}\right) \end{equation*} \\\\">>./final.tex
     echo "\midrule">>./final.tex
-    echo "Cykliczna & `./cycle ${parameters[0]} $org` \\\\">>./final.tex
+    echo "Zapis cykliczny & `./cycle ${parameters[0]} $org` \\\\">>./final.tex
      echo "\midrule">>./final.tex
     echo "Kwadrat & `./square ${parameters[0]} $org` \\\\">>./final.tex
      echo "\midrule">>./final.tex
