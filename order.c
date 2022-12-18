@@ -44,12 +44,6 @@ printf("%s",argv[1]);
 	for (int i = 0; i < x; i++)
 		zlozenie[i] = permutacja[i];
 
-		for (int i = 0; i < x; i++) 
-	{
-		printf("%d ", zlozenie[i]);
-	}
-	printf("\n");
-
 	int zlozenie_2[x];
 
 	while(dopoki)
@@ -68,12 +62,6 @@ printf("%s",argv[1]);
 			zlozenie[i] = zlozenie_2[i];
 
 		rzad++;
-			
-		for (int i = 0; i < x; i++) 
-		{
-			printf("%d ", zlozenie_2[i]);
-		}
-		printf("\n");
 
 		int licznik = 0;
 
