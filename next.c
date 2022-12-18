@@ -51,7 +51,7 @@ printf("%s",argv[1]);
     {
 		for (int i = 0; i < x; i++) 
 		{
-			printf("%d ", zbior[i]);
+			printf("%d ", permutacja[i]);
 		}
 	}
 }	
