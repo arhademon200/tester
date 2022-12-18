@@ -5,14 +5,15 @@
 #include<stdbool.h>
 #include<ctype.h>
 
-int main()
+int main (int argc,const char *const argv[])
 {
+/*
+printf("%s",argv[1]);
+*/
 
-	int x;
-	int y = 1;
-	printf("Podaj dlugosc zbioru: ");
-	scanf("%d", &x);
-	
+	int dlugosc = atoi(argv[1]);
+	int x = dlugosc;
+	int y = 1;	
 	int zbior[x];
 
 	for (int i = 0; i < x; i++)
@@ -21,27 +22,14 @@ int main()
 		y++;
 	}
 
-	int permutacja[x];
-	int cnt1 = x-1;
 
-	for (int i = 0; i < x; i++)
+	int permutacja[dlugosc];
+	int p = 0;
+	
+	for (int o = 2; o < dlugosc + 2; o++)
 	{
-
-		srand(time(NULL));	
-    	int l = rand() % (cnt1 + 1);
-
-
-		permutacja[i] = zbior[l];
-		
-		int j = l;
-		while(j < cnt1 + 1)
-		{
-			zbior[j] = zbior[j+1];
-			j++;
-		}
-		zbior[cnt1] = cnt1 + 1;
-
-		cnt1--;
+		permutacja[p] = atoi(argv[o]);
+		p++;
 	}
 
 
