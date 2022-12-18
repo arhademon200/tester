@@ -31,9 +31,9 @@ echo "\begin{document}">>./final.tex
 file="1.conf"
 while read line; do
     parameters=()
-    dlug=()
+    
     amount=0
-    ilo=()
+    
     #echo -e "$line\n"
     for value in $line; do
         parameters+=($value)
@@ -44,27 +44,36 @@ while read line; do
     	echo "Liczba parametrow jset wieksza lub mniejsza niz 2"
     	exit 1
     fi
-       
-    dlug+=(${parameters[0]})
-    ilo+=(${parameters[1]})
     
-        if ! [[ $dlug -lt 0 ]]
+    re='^[0-9]+$'
+    if ! [[ ${parameters[0]} =~ $re ]] ;then
+    	echo "${parameters[0]} nie jest numerem"
+    	exit 3
+    fi
+    if ! [[ ${parameters[1]} =~ $re ]] ;then
+    	echo "${parameters[1]} nie jest numerem"
+    	exit 3
+    fi
+       
+    dlug=$((${parameters[0]} + h))
+    ilo=$((${parameters[1]} + h))
+        if [[ $dlug -lt 1 ]]
     then
-    	echo "Zbior nie moze przekraczac 40"
+    	echo "Zbior nie moze byc mniejszy niz 1"
     	exit 7
     fi
     
-    if ! [[ $ilo -lt -1 ]]
+    if [[ $ilo -lt 0 ]]
     then
-    	echo "Ilosc premutacji nie moze przekraczac 50"
+    	echo "Ilosc premutacji nie moze byc mniejszy niz 0"
     	exit 8
     fi
-    if ! [[ $dlug -gt 40 ]]
+    if [[ $dlug -gt 40 ]]
     then
     	echo "Zbior nie moze przekraczac 40"
     	exit 5
     fi
-    if ! [[ $ilo -gt 50 ]]
+    if [[ $ilo -gt 50 ]]
     then
     	echo "Ilosc premutacji nie moze przekraczac 50"
     	exit 6
@@ -74,15 +83,7 @@ while read line; do
 
     
     echo "\section{Permutacje zbioru $dlug -elementowego}">>./final.tex
-    re='^[0-9]+$'
-    if ! [[ $dlug =~ $re ]] ;then
-    	echo "$dlug nie jest numerem"
-    	exit 3
-    fi
-    if ! [[ $ilo =~ $re ]] ;then
-    	echo "$ilo nie jest numerem"
-    	exit 3
-    fi
+    
     for ((i=0;i<$ilo;i++))
     do
     ran=$RANDOM
