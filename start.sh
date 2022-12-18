@@ -46,7 +46,7 @@ while read line; do
        
     dlug+=(${parameters[0]})
     ilo+=(${parameters[1]})
-    
+    echo "\section{Permutacje zbioru $dlug -elementowego}">>./final.tex
     re='^[0-9]+$'
     if ! [[ $dlug =~ $re ]] ;then
     	echo "$dlug nie jest numerem"
@@ -59,7 +59,6 @@ while read line; do
     for ((i=0;i<$ilo;i++))
     do
     ran=$RANDOM
-    echo "\section{Permutacje zbioru $dlug -elementowego}">>./final.tex
     #echo "$ran"
     org=`./main ${parameters[0]} ${ran}`
     
