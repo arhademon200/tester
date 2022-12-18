@@ -10,7 +10,7 @@ printf("%s",argv[1]);
 */
 
 int dlugosc = atoi(argv[1]);
-int random = atoi(argv[2]);
+int rando = atoi(argv[2]);
 //printf("%d",dlugosc);
 //printf("%d",ilosc);
 
