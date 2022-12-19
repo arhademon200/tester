@@ -31,7 +31,7 @@ echo "\begin{document}">>./final.tex
 file="1.conf"
 while read line; do
     parameters=()
-    
+    iloscall=0
     amount=0
     
     #echo -e "$line\n"
@@ -76,7 +76,8 @@ while read line; do
     
     if [[ $ilo -eq 0 ]]
     then
-    	echo "Ilosc 0"
+    	ilo=`./factorial ${parameters[0]}`
+	iloscall=1
     fi
     
     if [[ $dlug -gt 40 ]]
@@ -101,7 +102,12 @@ while read line; do
     do
     ran=$RANDOM
     #echo "$ran"
-    org=`./main ${parameters[0]} ${ran}`
+    if [ $iloscall -eq 1 ]
+    then
+    	org=`./allp ${parameters[0]} ${i}`
+    else
+    	org=`./main ${parameters[0]} ${ran}`
+    fi
     
     echo "\subsection{Permutacja ($org)}">>./final.tex
     echo "\begin{tabular}{|c|c|}">>./final.tex
