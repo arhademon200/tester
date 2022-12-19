@@ -77,7 +77,7 @@ while read line; do
     if [[ $ilo -eq 0 ]]
     then
     	alll=()
-    	alll=$((`./factorial ${parameters[0]}` * 1))
+    	alll=`./factorial ${parameters[0]}`
 	ilo=$alll
 	iloscall=1
     fi
