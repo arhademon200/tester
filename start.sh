@@ -78,7 +78,8 @@ while read line; do
     then
     	alll=()
     	alll=`./factorial ${parameters[0]}`
-	ilo=$alll
+	echo "$alll"
+	ilo=$((${alll} + h))
 	iloscall=1
     fi
     
