@@ -42,6 +42,7 @@ while read line; do
     if ! [ $amount -eq 2 ]
     then
     	echo "Liczba parametrow jset wieksza lub mniejsza niz 2"
+	rm final.tex
     	exit 1
     fi
     
@@ -59,7 +60,7 @@ while read line; do
        
     dlug=$((${parameters[0]} + h))
     ilo=$((${parameters[1]} + h))
-        if [[ $dlug -lt 1 ]]
+    if [[ $dlug -lt 1 ]]
     then
     	echo "Zbior nie moze byc mniejszy niz 1"
 	rm final.tex
