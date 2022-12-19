@@ -48,10 +48,12 @@ while read line; do
     re='^[0-9]+$'
     if ! [[ ${parameters[0]} =~ $re ]] ;then
     	echo "${parameters[0]} nie jest numerem"
+	rm final.tex
     	exit 3
     fi
     if ! [[ ${parameters[1]} =~ $re ]] ;then
     	echo "${parameters[1]} nie jest numerem"
+	rm final.tex
     	exit 3
     fi
        
@@ -60,22 +62,32 @@ while read line; do
         if [[ $dlug -lt 1 ]]
     then
     	echo "Zbior nie moze byc mniejszy niz 1"
+	rm final.tex
     	exit 7
     fi
     
     if [[ $ilo -lt 0 ]]
     then
     	echo "Ilosc premutacji nie moze byc mniejszy niz 0"
+	rm final.tex
     	exit 8
     fi
+    
+    if [[ $ilo -eq 0 ]]
+    then
+    	echo "Ilosc 0"
+    fi
+    
     if [[ $dlug -gt 40 ]]
     then
     	echo "Zbior nie moze przekraczac 40"
+	rm final.tex
     	exit 5
     fi
     if [[ $ilo -gt 50 ]]
     then
     	echo "Ilosc premutacji nie moze przekraczac 50"
+	rm final.tex
     	exit 6
     fi
     
