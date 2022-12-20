@@ -39,27 +39,69 @@ printf("%s",argv[1]);
 
     /*DWULINIOWY*/
 
+	for (int i = 0; i < x; i++) 
+	{
+		printf("%d ", zbior[i]);
+		
+		int dlg_z = floor(log10(zbior[i])) + 1;
+		int dlg_p = floor(log10(permutacja[i])) + 1;
+		if (dlg_z < dlg_p)
+		{
+			int cnt = dlg_p - dlg_z;
+			while (cnt < dlg_p)
+			{
+				printf(" ");
+				cnt++;
+			}
+		
+		}
+	}
+	
+	printf("\n");
+
+    /*DWULINIOWY*/
+
+
 	int licznik = 0;
 	while(licznik < x)
 	{
+		int dlg_z = floor(log10(zbior[licznik+1])) + 1;
+		int dlg_p = floor(log10(permutacja[licznik+1])) + 1;
+
 		if(licznik == x-1)
 			printf("%d ", zbior[licznik]);
 		else
-			printf("%d & ", zbior[licznik]);
+		{
+			printf("%d", zbior[licznik]);
+			if (dlg_z == 1)
+				printf("  ");
+			else
+				printf(" ");
+		}
 		licznik++;
 	}
 
 	printf("\\");
 	printf("\\");
 	printf("\n");
+	printf("& ");
 
 	int licznik_2 = 0;
 	while(licznik_2 < x)
 	{	
-		if(licznik_2 == x-1)
+		int dlg_z = floor(log10(zbior[licznik_2+1])) + 1;
+		int dlg_p = floor(log10(permutacja[licznik_2+1])) + 1;
+
+		if(licznik == x-1)
 			printf("%d ", permutacja[licznik_2]);
 		else
-			printf("%d & ", permutacja[licznik_2]);
+		{
+			printf("%d", permutacja[licznik_2]);
+			if (dlg_z == 1)
+				printf("  ");
+			else
+				printf(" ");
+		}
 		licznik_2++;
 	}
 
