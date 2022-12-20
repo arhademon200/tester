@@ -79,7 +79,6 @@ printf("%s",argv[1]);
 	}
 
 	printf("\\");
-	printf("\\");
 
 
 	return 0;
