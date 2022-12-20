@@ -88,7 +88,7 @@ printf("%s",argv[1]);
         }
     }
     else
-        printf("Nie ma.");
+        printf("Nie ma");
 
 
     
