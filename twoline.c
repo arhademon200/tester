@@ -34,14 +34,13 @@ printf("%s",argv[1]);
 	}
 
 
-    /*DWULINIOWY*/
+   /*DWULINIOWY*/
 
 
 	int licznik = 0;
 	while(licznik < x)
 	{
 		int dlg_z = floor(log10(zbior[licznik+1])) + 1;
-		int dlg_p = floor(log10(permutacja[licznik+1])) + 1;
 
 		if(licznik == x-1)
 			printf("%d ", zbior[licznik]);
@@ -64,7 +63,6 @@ printf("%s",argv[1]);
 	int licznik_2 = 0;
 	while(licznik_2 < x)
 	{	
-		int dlg_z = floor(log10(zbior[licznik_2+1])) + 1;
 		int dlg_p = floor(log10(permutacja[licznik_2+1])) + 1;
 
 		if(licznik == x-1)
@@ -72,7 +70,7 @@ printf("%s",argv[1]);
 		else
 		{
 			printf("%d", permutacja[licznik_2]);
-			if (dlg_z == 1)
+			if (dlg_p == 1)
 				printf("  ");
 			else
 				printf(" ");
