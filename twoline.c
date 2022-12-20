@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
@@ -36,9 +37,6 @@ printf("%s",argv[1]);
 
 
 	
-
-    /*DWULINIOWY*/
-
 	for (int i = 0; i < x; i++) 
 	{
 		printf("%d ", zbior[i]);
