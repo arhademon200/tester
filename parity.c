@@ -178,12 +178,12 @@ printf("%s",argv[1]);
 	if(par % 2 == 0)
 	{
 		parzystosc = true;
-		printf("parzysta");
+		printf("Parzysta");
 	}
 	else
 	{
 		parzystosc = false;
-		printf("nieparzysta");
+		printf("Nieparzysta");
 	}
 	return 0;
 
