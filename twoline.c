@@ -34,29 +34,6 @@ printf("%s",argv[1]);
 	}
 
 
-
-
-	
-	for (int i = 0; i < x; i++) 
-	{
-		printf("%d ", zbior[i]);
-		
-		int dlg_z = floor(log10(zbior[i])) + 1;
-		int dlg_p = floor(log10(permutacja[i])) + 1;
-		if (dlg_z < dlg_p)
-		{
-			int cnt = dlg_p - dlg_z;
-			while (cnt < dlg_p)
-			{
-				printf(" ");
-				cnt++;
-			}
-		
-		}
-	}
-	
-	printf("\n");
-
     /*DWULINIOWY*/
 
 
