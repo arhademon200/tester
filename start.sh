@@ -41,7 +41,7 @@ while read line; do
     done
     if ! [ $amount -eq 2 ]
     then
-    	echo "Liczba parametrow jset wieksza lub mniejsza niz 2"
+    	echo "Liczba parametrow jest wieksza lub mniejsza niz 2"
 	rm final.tex
     	exit 1
     fi
@@ -69,7 +69,7 @@ while read line; do
     
     if [[ $ilo -lt 0 ]]
     then
-    	echo "Ilosc premutacji nie moze byc mniejszy niz 0"
+    	echo "Ilosc permutacji nie moze byc mniejszy niz 0"
 	rm final.tex
     	exit 8
     fi
@@ -90,7 +90,7 @@ while read line; do
     fi
     if [[ $ilo -gt 50 ]]
     then
-    	echo "Ilosc premutacji nie moze przekraczac 50"
+    	echo "Ilosc permutacji nie moze przekraczac 50"
 	rm final.tex
     	exit 6
     fi
