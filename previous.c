@@ -23,36 +23,75 @@ printf("%s",argv[1]);
 	}
 
 
-	/* POPRZEDNIA*/
+	/* POPRZEDNIA */
 
-	bool ppd = true;
-	int k = x-1;
-    while(ppd)
+    int n = x-1;
+    int aj = 0;
+    int ak = 0;
+    bool jest_j = false;
+    int j = 0;
+    int j_aj = 0;
+        
+
+    for (j = 0; 0 <= j && j <= n - 1; j++)
     {
-		if(k == 0)
-		{
-			printf("Nie ma poprzedniej permutacji.\n");
-			ppd = false;
-			break;
-		}
-		
-		else if(permutacja[k-1] > permutacja[k])
-		{   
-			int tmp = permutacja[k];
-			permutacja[k] = permutacja[k-1];
-			permutacja[k-1] = tmp;
-			break;
-		}
-		k--;
-
-		
+        if(permutacja[j] > permutacja[j+1])
+        {	if(j >= j_aj)
+            {
+                aj = permutacja[j];
+                j_aj = j;
+                jest_j = true;
+            }	
+        }
     }
 
-	if(ppd == true)
+    int temp;
+    int k_ak;
+
+    if(jest_j == true)
     {
-		for (int i = 0; i < x; i++) 
-		{
-			printf("%d ", permutacja[i]);
-		}
-	}
+        for (int k = 0; k < x; k++)
+        {
+            if(permutacja[k] < aj && k > j_aj)
+                if(permutacja[k] >= ak)
+                {
+                    ak = permutacja[k];
+                    k_ak = k;
+                }
+        }
+
+        temp = permutacja[j_aj];
+        permutacja[j_aj] = permutacja[k_ak];
+        permutacja[k_ak] = temp;
+
+        int m = x - j_aj;
+        int z = j_aj+1;
+        int w = x - 1;
+        for(int i = 0; i < m/2 ; i++)
+        {
+            temp = permutacja[z];
+            permutacja[z] = permutacja[w];
+            permutacja[w] = temp;
+            z++;
+            w--;
+        }
+
+
+
+    }   
+
+    if(jest_j == true)
+    {
+        for (int i = 0; i < x; i++) 
+        {
+            printf("%d ", permutacja[i]);
+        }
+    }
+    else
+        printf("Nie ma.");
+
+
+    
+
+
 }	
