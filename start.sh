@@ -126,9 +126,9 @@ while read line; do
      echo "\midrule">>./final.tex
     echo "Kwadrat & `./square ${parameters[0]} $org` \\\\">>./final.tex
      echo "\midrule">>./final.tex
-    echo "Nastepna & `./next ${parameters[0]} $org` \\\\">>./final.tex
-     echo "\midrule">>./final.tex
     echo "Poprzednia & `./previous ${parameters[0]} $org` \\\\">>./final.tex
+     echo "\midrule">>./final.tex
+    echo "Nastepna & `./next ${parameters[0]} $org` \\\\">>./final.tex
      echo "\midrule">>./final.tex
     echo "Parzystosc & `./parity ${parameters[0]} $org` \\\\">>./final.tex
      echo "\midrule">>./final.tex
