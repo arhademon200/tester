@@ -69,7 +69,7 @@ while read line; do
     
     if [[ $ilo -lt 0 ]]
     then
-    	echo "Ilosc permutacji nie moze byc mniejszy niz 0"
+    	echo "Ilosc permutacji nie moze byc mniejsza niz 0"
 	rm final.tex
     	exit 8
     fi
@@ -82,9 +82,9 @@ while read line; do
 	iloscall=1
     fi
     
-    if [[ $dlug -gt 40 ]]
+    if [[ $dlug -gt 37 ]]
     then
-    	echo "Zbior nie moze przekraczac 40"
+    	echo "Zbior nie moze przekraczac 37"
 	rm final.tex
     	exit 5
     fi
