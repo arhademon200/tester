@@ -107,9 +107,23 @@ while read line; do
     if [ $iloscall -eq 1 ]
     then
     	org=`./allp ${parameters[0]} ${i}`
+    	if ! [[ $? -eq 0 ]]
+		then
+			echo "Program allp.c sie nie wykonal"
+			rm final.tex
+			exit 9
+		fi
     else
     	org=`./main ${parameters[0]} ${ran}`
+    	if ! [[ $? -eq 0 ]]
+		then
+			echo "Program main.c sie nie wykonal"
+			rm final.tex
+			exit 10
+		fi
     fi
+    
+    
     
     echo "\subsection{Permutacja ($org)}">>./final.tex
     echo "\begin{center}">>./final.tex
