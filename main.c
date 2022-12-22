@@ -34,9 +34,8 @@ int rando = atoi(argv[2]);
 
 	for (int i = 0; i < x; i++)
 	{
-
-		srand(time(NULL));	
-    	int r = rand() % (cnt1 + 1);
+	
+    	int l = rando % (cnt1 + 1);
 		permutacja[i] = zbior[l];
 		
 		int j = l;
