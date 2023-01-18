@@ -1,0 +1,8 @@
+#!/bin/bash
+
+czas=$( { time ./start.sh; } 2>&1 )
+mkdir czastmp
+echo $czas | grep -o 'real.*s' > czastmp/tmp.txt
+cut -d' ' -f1-2 czastmp/tmp.txt > czastmp/tmp2.txt
+sed 's/real //' czastmp/tmp2.txt > wynik.txt
+rm -r czastmp
