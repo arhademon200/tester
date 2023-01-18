@@ -1,0 +1,4 @@
+chmod 777 czas
+./czas
+
+Wynik znajduje się w pliku wynik.txt.
