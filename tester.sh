@@ -64,7 +64,7 @@ while read line; do
     fi
     
     
-    for ((i=0;i<$amount;i++))
+    for ((i=2;i<$amount;i++))
     do
     	mniejsza=$((${parameters[i]} + h))
     	
