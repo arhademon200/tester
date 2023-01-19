@@ -67,7 +67,10 @@ while read line; do
     for ((i=2;i<$amount;i++))
     do
     	mniejsza=$((${parameters[i]} + h))
-    	
+    	#rm 1.conf
+	#touch 1.conf
+	#chmod 777 1.conf
+	
     	
     	
     	
