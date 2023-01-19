@@ -8,7 +8,7 @@ wyjasnienie
 
 
 # time
-time uruchamia się zamiast start.sh
-chmod 777 time
-./time
+time uruchamia się zamiast start.sh <br />
+chmod 777 time <br />
+./time <br />
 Pomiar czasu jest w wynik.txt
