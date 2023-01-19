@@ -5,3 +5,10 @@ zawartosc pliku test1.conf
 wyjasnienie  
 1 - rodzaj testu, druga liczba to wielkosc zbioru a kolejne to ilosc permutacji  
 2 - rodzaj testu, druga liczba to ilosc permutacji a kolejne to wielkosc zbioru  
+
+
+# time
+time uruchamia się zamiast start.sh
+chmod 777 time
+./time
+Pomiar czasu jest w wynik.txt
