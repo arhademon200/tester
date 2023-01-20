@@ -9,6 +9,7 @@ wyjasnienie
 
 # time
 time uruchamia się zamiast start.sh <br />
+skrypt działa jak start.sh, czyli czyta dane z pliku konfiguracyjnego przeznaczonego tylko dla generatora (dla testera trzeba jeszcze skonfigurować - inaczej na razie zapisuje tylko wynik jednego pomiaru w pliku wynik.txt) <br /> 
 chmod 777 time <br />
 ./time <br />
 Pomiar czasu jest w wynik.txt
