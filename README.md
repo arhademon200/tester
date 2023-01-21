@@ -17,3 +17,6 @@ Pomiar czasu jest w wynik.txt <br />
 Przykładowa zawartość pliku wynik.txt: <br />
 0 //liczba minut <br />
 0,784 //liczba sekund <br />
+
+# latex.sh
+Na razie szablon z założeniami jak ma być generowany plik latexowy i pdf.
