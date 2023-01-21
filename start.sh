@@ -13,12 +13,18 @@ do
 		exit 4
 	fi
 done
-if [ -a ./final.tex ]
-then
-	rm final.tex
-fi
-touch final.tex
-chmod 777 final.tex
+istnieje=0
+for(i=1;$istnieje==0;i++)
+do 
+	if ! [ -a ./PDF_OUTPUT/final$i.tex ]
+		then
+		touch ./PDF_OUTPUT/final$i.tex
+		chmod 777 ./PDF_OUTPUT/final$i.tex
+		$istnieje = 1
+		fi
+	
+done
+
 
 echo "\documentclass{article}">>./final.tex
 echo "\usepackage[T1]{fontenc}">>./final.tex
