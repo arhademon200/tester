@@ -4,6 +4,12 @@ then
 	echo "Nie mozna znalesc pliku konfiguracyjnego test1.conf"
 	exit 10
 fi
+if [ -d PDF_OUTPUT ]; then
+    rm -r PDF_OUTPUT
+fi
+
+mkdir PDF_OUTPUT
+
 while read line; do
     parameters=()
     amount=0
@@ -63,16 +69,16 @@ while read line; do
 		exit 12
     	fi
 	
-		#~ time.sh:
-	
+	#~ time.sh:
     	mkdir -p czastmp
-		{ time ./start.sh 1 ; } 2> czastmp/tmp1.txt
+	{ time ./start.sh 1 ; } 2> czastmp/tmp1.txt
 
-		grep 'real' czastmp/tmp1.txt | grep -v 'user\|sys' > wynik.txt
-		sed -i -e 's/[real \t]*//' wynik.txt
-		sed -i 's/m/\n/;s/s//' wynik.txt
-		rm -r czastmp
-    	
+	grep 'real' czastmp/tmp1.txt | grep -v 'user\|sys' >> wynik.txt
+	sed -i -e 's/[real \t]*//' wynik.txt
+	sed -i 's/m/\n/;s/s//' wynik.txt
+	rm -r czastmp
+    	#####
     	
     done
 done < test1.conf
+    
