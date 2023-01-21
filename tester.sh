@@ -20,36 +20,17 @@ while read line; do
     		exit 11
     	fi
     done
-    
-    
-    
-    
     wazniejsza=$((${parameters[1]} + h))
-    
-    #jesli zbiur
-    if [[ $wazniejsza -lt 1 ]]
-    then
-    	echo "Zbior nie moze byc mniejszy niz 1"
-    	exit 13
-    fi
-    if [[ $dlug -gt 40 ]]
+    if [[ $wazniejsza -gt 40 ]]
     then
     	echo "Zbior nie moze przekraczac 40"
     	exit 14
     fi
-    #jesli ilosc
-    if [[ $ilo -lt 0 ]]
+    if [[ $wazniejsza -lt 0 ]]
     then
-    	echo "Ilosc premutacji nie moze byc mniejszy niz 0"
+    	echo "Nie moze byc mniejszy niz 0"
     	exit 15
     fi
-    if [[ $ilo -gt 50 ]]
-    then
-    	echo "Ilosc premutacji nie moze przekraczac 50"
-    	exit 16
-    fi
-    
-    
     for ((i=2;i<$amount;i++))
     do
     	mniejsza=$((${parameters[i]} + h))
@@ -57,10 +38,20 @@ while read line; do
 	touch 1.conf
 	chmod 777 1.conf
 	rodzaj=$((${parameters[0]} + h))
+	if [[ $wazniejsza -gt 40 ]]
+    	then
+    		echo "Zbior nie moze przekraczac 40"
+    		exit 14
+    	fi
+    	if [[ $wazniejsza -lt 0 ]]
+    	then
+    		echo "Nie moze byc mniejszy niz 0"
+    		exit 15
+    	fi
     	if [[ $rodzaj -eq 1 ]]
     	then
 		echo "$wazniejsza $mniejsza" >> 1.conf
-
+		
 
    	elif [[ $rodzaj -eq 2 ]]
     	then
