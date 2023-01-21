@@ -13,26 +13,29 @@ do
 		exit 4
 	fi
 done
+
 istnieje=0
-for(i=1;$istnieje==0;i++)
+for ((b=0 ;$istnieje==0; ))
 do 
-	if ! [ -a ./PDF_OUTPUT/final$i.tex ]
-		then
-		touch ./PDF_OUTPUT/final$i.tex
-		chmod 777 ./PDF_OUTPUT/final$i.tex
-		$istnieje = 1
-		fi
+	b=$(($b + 1))
+	if ! [ -f ./PDF_OUTPUT/final$b.tex ]
+	then
+		touch ./PDF_OUTPUT/final$b.tex
+		chmod 777 ./PDF_OUTPUT/final$b.tex
+		istnieje=1
+	fi
+	
 	
 done
 
 
-echo "\documentclass{article}">>./PDF_OUTPUT/final$i.tex
-echo "\usepackage[T1]{fontenc}">>./PDF_OUTPUT/final$i.tex
-echo "\usepackage{array}">>./PDF_OUTPUT/final$i.tex
-echo "\usepackage[margin=5pt]{geometry}">>./PDF_OUTPUT/final$i.tex
-echo "\usepackage{booktabs}">>./PDF_OUTPUT/final$i.tex
-echo "\usepackage{amsmath}">>./PDF_OUTPUT/final$i.tex
-echo "\begin{document}">>./PDF_OUTPUT/final$i.tex
+echo "\documentclass{article}">>./PDF_OUTPUT/final$b.tex
+echo "\usepackage[T1]{fontenc}">>./PDF_OUTPUT/final$b.tex
+echo "\usepackage{array}">>./PDF_OUTPUT/final$b.tex
+echo "\usepackage[margin=5pt]{geometry}">>./PDF_OUTPUT/final$b.tex
+echo "\usepackage{booktabs}">>./PDF_OUTPUT/final$b.tex
+echo "\usepackage{amsmath}">>./PDF_OUTPUT/final$b.tex
+echo "\begin{document}">>./PDF_OUTPUT/final$b.tex
 
 file="1.conf"
 while read line; do
@@ -104,7 +107,7 @@ while read line; do
     
 
     
-    echo "\section{Permutacje zbioru $dlug -elementowego}">>./PDF_OUTPUT/final$i.tex
+    echo "\section{Permutacje zbioru $dlug -elementowego}">>./PDF_OUTPUT/final$b.tex
     
     for ((i=0;i<$ilo;i++))
     do
@@ -131,35 +134,35 @@ while read line; do
     
     
     
-    echo "\subsection{Permutacja ($org)}">>./PDF_OUTPUT/final$i.tex
-    echo "\begin{center}">>./PDF_OUTPUT/final$i.tex
-    echo "\centering">>./PDF_OUTPUT/final$i.tex
-    echo "\begin{tabular}{|c|c|}">>./PDF_OUTPUT/final$i.tex
-    echo "\toprule">>./PDF_OUTPUT/final$i.tex
-    echo "Typ & Permutacja \\\\">>./PDF_OUTPUT/final$i.tex
+    echo "\subsection{Permutacja ($org)}">>./PDF_OUTPUT/final$b.tex
+    echo "\begin{center}">>./PDF_OUTPUT/final$b.tex
+    echo "\centering">>./PDF_OUTPUT/final$b.tex
+    echo "\begin{tabular}{|c|c|}">>./PDF_OUTPUT/final$b.tex
+    echo "\toprule">>./PDF_OUTPUT/final$b.tex
+    echo "Typ & Permutacja \\\\">>./PDF_OUTPUT/final$b.tex
     
     
-    echo "\midrule">>./PDF_OUTPUT/final$i.tex
-    echo "Zapis jednolinowy & ($org) \\\\">>./PDF_OUTPUT/final$i.tex
-    echo "\midrule">>./PDF_OUTPUT/final$i.tex
-    echo "Zapis dwuliniowy &`./twoline ${parameters[0]} $org`\\\\">>./PDF_OUTPUT/final$i.tex
-    echo "\midrule">>./PDF_OUTPUT/final$i.tex
-    echo "Zapis cykliczny & `./cycle ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$i.tex
-     echo "\midrule">>./PDF_OUTPUT/final$i.tex
-    echo "Kwadrat & `./square ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$i.tex
-     echo "\midrule">>./PDF_OUTPUT/final$i.tex
-    echo "Poprzednia & `./previous ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$i.tex
-     echo "\midrule">>./PDF_OUTPUT/final$i.tex
-    echo "Nastepna & `./next ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$i.tex
-     echo "\midrule">>./PDF_OUTPUT/final$i.tex
-    echo "Parzystosc & `./parity ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$i.tex
-     echo "\midrule">>./PDF_OUTPUT/final$i.tex
-    echo "Rzad & `./order ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$i.tex
+    echo "\midrule">>./PDF_OUTPUT/final$b.tex
+    echo "Zapis jednolinowy & ($org) \\\\">>./PDF_OUTPUT/final$b.tex
+    echo "\midrule">>./PDF_OUTPUT/final$b.tex
+    echo "Zapis dwuliniowy &`./twoline ${parameters[0]} $org`\\\\">>./PDF_OUTPUT/final$b.tex
+    echo "\midrule">>./PDF_OUTPUT/final$b.tex
+    echo "Zapis cykliczny & `./cycle ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$b.tex
+     echo "\midrule">>./PDF_OUTPUT/final$b.tex
+    echo "Kwadrat & `./square ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$b.tex
+     echo "\midrule">>./PDF_OUTPUT/final$b.tex
+    echo "Poprzednia & `./previous ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$b.tex
+     echo "\midrule">>./PDF_OUTPUT/final$b.tex
+    echo "Nastepna & `./next ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$b.tex
+     echo "\midrule">>./PDF_OUTPUT/final$b.tex
+    echo "Parzystosc & `./parity ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$b.tex
+     echo "\midrule">>./PDF_OUTPUT/final$b.tex
+    echo "Rzad & `./order ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$b.tex
     
-    echo "\bottomrule">>./PDF_OUTPUT/final$i.tex
-    echo "\end{tabular}\par">>./PDF_OUTPUT/final$i.tex
-     echo "\end{center}">>./PDF_OUTPUT/final$i.tex
+    echo "\bottomrule">>./PDF_OUTPUT/final$b.tex
+    echo "\end{tabular}\par">>./PDF_OUTPUT/final$b.tex
+     echo "\end{center}">>./PDF_OUTPUT/final$b.tex
     
     done
 done < $file 
-echo "\end{document}">>./PDF_OUTPUT/final$i.tex
+echo "\end{document}">>./PDF_OUTPUT/final$b.tex

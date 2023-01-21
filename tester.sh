@@ -4,6 +4,12 @@ then
 	echo "Nie mozna znalesc pliku konfiguracyjnego test1.conf"
 	exit 10
 fi
+
+if [ -e ./wynik.txt ]
+then
+	rm wynik.txt
+fi
+
 if [ -d PDF_OUTPUT ]; then
     rm -r PDF_OUTPUT
 fi
@@ -69,6 +75,7 @@ while read line; do
 		exit 12
     	fi
 	
+
 	#~ time.sh:
     	mkdir -p czastmp
 	{ time ./start.sh 1 ; } 2> czastmp/tmp1.txt
