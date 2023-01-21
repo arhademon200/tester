@@ -20,21 +20,7 @@ while read line; do
     		exit 11
     	fi
     done
-    rodzaj=$((${parameters[0]} + h))
-    if [[ $rodzaj -eq 1 ]]
-    then
-
-
-
-    elif [[ $rodzaj -eq 2 ]]
-    then
-	
-	
-	
-    else
-    	echo "Pierwsza liczba jest niepoprawna"
-	exit 12
-    fi
+    
     
     
     
@@ -67,9 +53,24 @@ while read line; do
     for ((i=2;i<$amount;i++))
     do
     	mniejsza=$((${parameters[i]} + h))
-    	#rm 1.conf
-	#touch 1.conf
-	#chmod 777 1.conf
+    	rm 1.conf
+	touch 1.conf
+	chmod 777 1.conf
+	rodzaj=$((${parameters[0]} + h))
+    	if [[ $rodzaj -eq 1 ]]
+    	then
+		echo "$wazniejsza $mniejsza" >> 1.conf
+
+
+   	elif [[ $rodzaj -eq 2 ]]
+    	then
+		echo "$mniejsza $wazniejsza" >> 1.conf
+	
+	
+    	else
+    		echo "Pierwsza liczba jest niepoprawna"
+		exit 12
+    	fi
 	
     	
     	
