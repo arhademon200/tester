@@ -147,14 +147,18 @@ while read line; do
 	sed -i 's/m/\n/;s/s//' wynik.txt
 	rm -r czastmp
     	#####
+
 	echo "\section{Test 1}">>./test.tex
 	echo "\begin{table}[H]">>./test.tex
 	echo "\centering">>./test.tex
 	echo "\begin{tabular}{|c|c|}">>./test.tex
 	echo "\hline">>./test.tex
 	echo "Typ testu & A \\\ \hline">>./test.tex
-	echo "Rozmiar permutacji & 3 (zmienna) \\\ \hline">>./test.tex
-	echo "Czas & 120s (zmienna) \\\ \hline">>./test.tex
+	echo "Rozmiar permutacji &  (zmienna) \\\ \hline">>./test.tex
+	while read linia; do
+		for czas in $linia; do
+		echo "Czas & $czas \\\ \hline">>./test.tex
+	done < wynik.txt
 	echo "\end{tabular}">>./test.tex
 	echo "\end{table}">>./test.tex
 
@@ -169,8 +173,7 @@ while read line; do
 	echo "\includegraphics[scale=0.7]{test.png}">>./test.tex
 	echo "\end{center}">>./test.tex
 	echo "\end{figure}">>./test.tex
-
-echo "\raggedright">>./test.tex
+	echo "\raggedright">>./test.tex
 	rm wynik.txt
     done
     echo "\end{document}">>./test.tex
