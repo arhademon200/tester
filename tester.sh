@@ -162,14 +162,15 @@ while read line; do
 	
 	touch dane.txt
 	chmod 777 dane.txt
-	echo "$mniejsza $czasowy"
+	echo "$mniejsza $czasowy" > dane.txt
 
 	gnuplot -persist <<-EOFMarker
     		set terminal png
     		set output 'test.png'
-    		plot'wynik.txt' using 1: 2
+    		plot'dane.txt' using 1: 2
 	EOFMarker
 	
+	rm dane.txt
 	rm wynik.txt
     done
     echo "\end{tabular}">>./test.tex
