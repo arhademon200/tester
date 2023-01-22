@@ -158,7 +158,7 @@ while read line; do
 	sed -i 's/m/\n/;s/s//' wynik.txt
 	
 	##
-	read min < $file
+	read min < wynik.txt
 	sec=$(sed '2q;d' wynik.txt)
 	if [ $min -eq 0 ]
 	then
