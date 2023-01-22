@@ -78,16 +78,30 @@ while read line; do
     for ((i=2;i<$amount;i++))
     do
     	echo "\section{Test 1}">>./test.tex
-	echo "\begin{table}[H]">>./test.tex
-	echo "\centering">>./test.tex
-	echo "\begin{tabular}{|c|c|}">>./test.tex
-	echo "\hline">>./test.tex
-	echo "Typ testu & A \\\ \hline">>./test.tex
-	echo "Rozmiar permutacji & 3 (zmienna) \\\ \hline">>./test.tex
-	echo "Czas & 120s (zmienna) \\\ \hline">>./test.tex
-	echo "\end{tabular}">>./test.tex
-	echo "\end{table}">>./test.tex
-	echo "\raggedright">>./test.tex
+
+echo "\begin{table}[H]">>./test.tex
+echo "\centering">>./test.tex
+echo "\begin{tabular}{|c|c|}">>./test.tex
+echo "\hline">>./test.tex
+echo "Typ testu & A \\\ \hline">>./test.tex
+echo "Rozmiar permutacji & 3 (zmienna) \\\ \hline">>./test.tex
+echo "Czas & 120s (zmienna) \\\ \hline">>./test.tex
+echo "\end{tabular}">>./test.tex
+echo "\end{table}">>./test.tex
+
+gnuplot -persist <<-EOFMarker
+    set terminal png
+    set output 'test.png'
+    plot'test.txt' using 1: 2
+EOFMarker
+
+echo "\begin{figure}[H]">>./test.tex
+echo "\begin{center}">>./test.tex
+echo "\includegraphics[scale=0.7]{test.png}">>./test.tex
+echo "\end{center}">>./test.tex
+echo "\end{figure}">>./test.tex
+
+echo "\raggedright">>./test.tex
 
     	mniejsza=$((${parameters[i]} + h))
     	rm 1.conf
