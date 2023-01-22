@@ -79,6 +79,7 @@ while read line; do
     echo "\centering">>./test.tex
     echo "\begin{tabular}{|c|c|}">>./test.tex
     echo "\hline">>./test.tex
+    
     echo "Typ testu & A \\\ \hline">>./test.tex
 
     for ((i=2;i<$amount;i++))
@@ -163,12 +164,12 @@ while read line; do
 	touch dane.txt
 	chmod 777 dane.txt
 	echo "$mniejsza $czasowy" >> dane.txt
-
 	
 	rm wynik.txt
     done
     echo "\end{tabular}">>./test.tex
     echo "\end{table}">>./test.tex
+    
 gnuplot -persist <<-EOFMarker
     set terminal png
     set output 'test.png'
