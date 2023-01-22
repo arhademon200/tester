@@ -70,7 +70,19 @@ while read line; do
     echo "\begin{tabular}{|c|c|}">>./test.tex
     echo "\hline">>./test.tex
     
-    echo "Typ testu & A \\\ \hline">>./test.tex
+    if [[ $rodzaj -eq 1 ]]
+    	then
+		echo "Rodzaj testu & A \\\ \hline">>./test.tex
+		echo "Wielkosc zbioru & $wazniejsza  \\\ \hline">>./test.tex
+		echo "Ilosc permutacji & Czas \\\ \hline">>./test.tex
+		
+
+   	elif [[ $rodzaj -eq 2 ]]
+    	then
+		echo "Rodzaj testu & B \\\ \hline">>./test.tex
+		echo "Ilosc permutacji & $wazniejsza \\\ \hline">>./test.tex
+		echo "Wielkosc zbioru & Czas \\\ \hline">>./test.tex
+    fi
 
     for ((i=2;i<$amount;i++))
     do
@@ -151,8 +163,7 @@ while read line; do
 
 ###############################################################################################
 
-	echo "Rozmiar permutacji &  (zmienna) \\\ \hline">>./test.tex
-	echo "Czas trwania & $czasowy \\\ \hline">>./test.tex
+	echo "$mniejsza & $czasowy \\\ \hline">>./test.tex
 	
 	touch dane.txt
 	chmod 777 dane.txt
