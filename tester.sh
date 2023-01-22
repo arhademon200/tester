@@ -4,10 +4,18 @@ then
 	echo "Nie mozna znalesc pliku konfiguracyjnego test1.conf"
 	exit 10
 fi
-
-if [ -e ./wynik.txt ]
+needed_files=("cycle" "main" "next" "order" "parity" "previous" "square" "twoline") 
+for need in ${needed_files[@]}
+do
+	if ! [ -e $need ]
+	then
+		echo "Nie mozna znalesc wymaganego pliku $need"
+		exit 4
+	fi
+done
+if [ -e ./test.tex ]
 then
-	rm wynik.txt
+	rm test.tex
 fi
 
 if [ -d PDF_OUTPUT ]; then
@@ -28,7 +36,6 @@ while read line; do
     do
     	if ! [[ ${parameters[i]} =~ $re ]] ;then
     		echo "${parameters[i]} nie jest numerem"
-		rm final.tex
     		exit 11
     	fi
     done
@@ -43,19 +50,63 @@ while read line; do
     	echo "Nie moze byc mniejszy niz 0"
     	exit 15
     fi
+    
+    touch test.tex
+    chmod 777 test.tex
+
+    echo "\documentclass[11pt,twoside,a4paper]{article}">>./test.tex
+    echo "\usepackage[T1]{fontenc}">>./test.tex
+    echo "\usepackage[utf8]{inputenc}">>./test.tex
+    echo "\usepackage[polish]{babel}">>./test.tex
+    echo "\usepackage{float}">>./test.tex
+    echo "\restylefloat{table}">>./test.tex
+    echo "\begin{document}">>./test.tex
+    echo "\raggedright">>./test.tex
+    echo "\section{Wstęp}">>./test.tex
+    echo "\begin{itemize}">>./test.tex
+    echo "\item Czas rozpoczęcia:">>./test.tex
+    echo "\item Czas zakończenia:">>./test.tex
+    echo "\item Nazwa pliku konfiguracyjnego:">>./test.tex
+    echo "\item Lokalizacja wygenerowanych dokumentów:">>./test.tex
+    echo "\item Lokalizacja testera:">>./test.tex
+    echo "\end{itemize}">>./test.tex
+
+
     for ((i=2;i<$amount;i++))
     do
+    	echo "\section{Test 1}">>./test.tex
+	echo "\begin{table}[H]">>./test.tex
+	echo "\centering">>./test.tex
+	echo "\begin{tabular}{|c|c|}">>./test.tex
+	echo "\hline">>./test.tex
+	echo "Typ testu & A \\\ \hline">>./test.tex
+	echo "Rozmiar permutacji & 3 (zmienna) \\\ \hline">>./test.tex
+	echo "Czas & 120s (zmienna) \\\ \hline">>./test.tex
+	echo "\end{tabular}">>./test.tex
+	echo "\end{table}">>./test.tex
+	echo "\raggedright">>./test.tex
+
     	mniejsza=$((${parameters[i]} + h))
     	rm 1.conf
 	touch 1.conf
 	chmod 777 1.conf
 	rodzaj=$((${parameters[0]} + h))
-	if [[ $wazniejsza -gt 40 ]]
+	if [[ $wazniejsza -gt 35 ]]
     	then
     		echo "Zbior nie moze przekraczac 40"
     		exit 14
     	fi
     	if [[ $wazniejsza -lt 0 ]]
+    	then
+    		echo "Nie moze byc mniejszy niz 0"
+    		exit 15
+    	fi
+	if [[ $mniejsza -gt 35 ]]
+    	then
+    		echo "Zbior nie moze przekraczac 40"
+    		exit 14
+    	fi
+    	if [[ $mniejsza -lt 0 ]]
     	then
     		echo "Nie moze byc mniejszy niz 0"
     		exit 15
@@ -87,5 +138,6 @@ while read line; do
     	#####
     	
     done
+    echo "\end{document}">>./test.tex
 done < test1.conf
     
