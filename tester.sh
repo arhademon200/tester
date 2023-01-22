@@ -76,7 +76,11 @@ while read line; do
     do
 
     	mniejsza=$((${parameters[i]} + h))
-    	rm 1.conf
+    	
+	if [ -e ./1.conf ]
+	then
+		rm 1.conf
+	fi
 	touch 1.conf
 	chmod 777 1.conf
 	
