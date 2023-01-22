@@ -65,10 +65,10 @@ while read line; do
     	org=`./allp ${parameters[0]} ${i}`
     	if ! [[ $? -eq 0 ]]
 		then
-			echo "Program allp.c sie nie wykonal"
-			rm final.tex
-			exit 9
-		fi
+		echo "Program allp.c sie nie wykonal"
+		rm final.tex
+		exit 9
+	fi
     else
     	org=`./main ${parameters[0]} ${ran}`
     	if ! [[ $? -eq 0 ]]
@@ -93,18 +93,60 @@ while read line; do
     echo "Zapis jednolinowy & ($org) \\\\">>./PDF_OUTPUT/final$b.tex
     echo "\midrule">>./PDF_OUTPUT/final$b.tex
     echo "Zapis dwuliniowy &`./twoline ${parameters[0]} $org`\\\\">>./PDF_OUTPUT/final$b.tex
+    if ! [[ $? -eq 0 ]]
+		then
+		echo "Program twoline sie nie wykonal"
+		rm final.tex
+		exit 9
+	fi
     echo "\midrule">>./PDF_OUTPUT/final$b.tex
     echo "Zapis cykliczny & `./cycle ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$b.tex
+    if ! [[ $? -eq 0 ]]
+		then
+		echo "Program cycle sie nie wykonal"
+		rm final.tex
+		exit 9
+	fi
     echo "\midrule">>./PDF_OUTPUT/final$b.tex
     echo "Kwadrat & `./square ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$b.tex
+    if ! [[ $? -eq 0 ]]
+		then
+		echo "Program square sie nie wykonal"
+		rm final.tex
+		exit 9
+	fi
     echo "\midrule">>./PDF_OUTPUT/final$b.tex
     echo "Poprzednia & `./previous ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$b.tex
+    if ! [[ $? -eq 0 ]]
+		then
+		echo "Program previous sie nie wykonal"
+		rm final.tex
+		exit 9
+	fi
     echo "\midrule">>./PDF_OUTPUT/final$b.tex
     echo "Nastepna & `./next ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$b.tex
+    if ! [[ $? -eq 0 ]]
+		then
+		echo "Program next sie nie wykonal"
+		rm final.tex
+		exit 9
+	fi
     echo "\midrule">>./PDF_OUTPUT/final$b.tex
     echo "Parzystosc & `./parity ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$b.tex
+    if ! [[ $? -eq 0 ]]
+		then
+		echo "Program parity sie nie wykonal"
+		rm final.tex
+		exit 9
+	fi
     echo "\midrule">>./PDF_OUTPUT/final$b.tex
     echo "Rzad & `./order ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$b.tex
+    if ! [[ $? -eq 0 ]]
+		then
+		echo "Program order sie nie wykonal"
+		rm final.tex
+		exit 9
+	fi
     
     echo "\bottomrule">>./PDF_OUTPUT/final$b.tex
     echo "\end{tabular}\par">>./PDF_OUTPUT/final$b.tex
