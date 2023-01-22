@@ -36,6 +36,7 @@ while read line; do
     do
     	if ! [[ ${parameters[i]} =~ $re ]] ;then
     		echo "${parameters[i]} nie jest numerem"
+		rm -r PDF_OUTPUT
     		exit 11
     	fi
     done
@@ -43,11 +44,13 @@ while read line; do
     if [[ $wazniejsza -gt 40 ]]
     then
     	echo "Zbior nie moze przekraczac 40"
+	rm -r PDF_OUTPUT
     	exit 14
     fi
     if [[ $wazniejsza -lt 0 ]]
     then
     	echo "Nie moze byc mniejszy niz 0"
+	rm -r PDF_OUTPUT
     	exit 15
     fi
     
@@ -93,22 +96,30 @@ while read line; do
 	rodzaj=$((${parameters[0]} + h))
 	if [[ $wazniejsza -gt 35 ]]
     	then
-    		echo "Zbior nie moze przekraczac 40"
+    		echo "Zbior nie moze przekraczac 35"
+		rm test.tex
+		rm -r PDF_OUTPUT
     		exit 14
     	fi
     	if [[ $wazniejsza -lt 0 ]]
     	then
     		echo "Nie moze byc mniejszy niz 0"
+		rm test.tex
+		rm -r PDF_OUTPUT
     		exit 15
     	fi
 	if [[ $mniejsza -gt 35 ]]
     	then
-    		echo "Zbior nie moze przekraczac 40"
+    		echo "Zbior nie moze przekraczac 35"
+		rm test.tex
+		rm -r PDF_OUTPUT
     		exit 14
     	fi
     	if [[ $mniejsza -lt 0 ]]
     	then
     		echo "Nie moze byc mniejszy niz 0"
+		rm test.tex
+		rm -r PDF_OUTPUT
     		exit 15
     	fi
     	if [[ $rodzaj -eq 1 ]]
@@ -123,6 +134,8 @@ while read line; do
 	
     	else
     		echo "Pierwsza liczba jest niepoprawna"
+		rm test.tex
+		rm -r PDF_OUTPUT
 		exit 12
     	fi
 	
@@ -130,6 +143,13 @@ while read line; do
 	#~ time.sh:
     	mkdir -p czastmp
 	{ time ./start.sh 1 ; } 2> czastmp/tmp1.txt
+	if ! [[ $? -eq 0 ]]
+		then
+		echo "Program start.sh sie nie wykonal"
+		rm test.tex
+		rm -r PDF_OUTPUT
+		exit 9
+	fi
 
 	grep 'real' czastmp/tmp1.txt | grep -v 'user\|sys' >> wynik.txt
 	sed -i -e 's/[real \t]*//' wynik.txt
