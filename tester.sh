@@ -158,23 +158,23 @@ while read line; do
 ###############################################################################################
 
 	echo "Rozmiar permutacji &  (zmienna) \\\ \hline">>./test.tex
-	echo "Czas & $czasowy \\\ \hline">>./test.tex
+	echo "Czas trwania & $czasowy \\\ \hline">>./test.tex
 	
 	touch dane.txt
 	chmod 777 dane.txt
-	echo "$mniejsza $czasowy" > dane.txt
+	echo "$mniejsza $czasowy" >> dane.txt
 
-	gnuplot -persist <<-EOFMarker
-    		set terminal png
-    		set output 'test.png'
-    		plot'dane.txt' using 1: 2
-	EOFMarker
 	
-	rm dane.txt
 	rm wynik.txt
     done
     echo "\end{tabular}">>./test.tex
     echo "\end{table}">>./test.tex
+gnuplot -persist <<-EOFMarker
+    set terminal png
+    set output 'test.png'
+    plot'dane.txt' using 1: 2
+EOFMarker
+    
     echo "\begin{figure}[H]">>./test.tex
     echo "\begin{center}">>./test.tex
     echo "\includegraphics[scale=0.7]{test.png}">>./test.tex
@@ -182,5 +182,6 @@ while read line; do
     echo "\end{figure}">>./test.tex
     echo "\raggedright">>./test.tex
     echo "\end{document}">>./test.tex
+    rm dane.txt
 done < test1.conf
 pdflatex test.tex
