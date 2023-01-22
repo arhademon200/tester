@@ -74,7 +74,12 @@ while read line; do
     echo "\item Lokalizacja wygenerowanych dokumentów:">>./test.tex
     echo "\item Lokalizacja testera:">>./test.tex
     echo "\end{itemize}">>./test.tex
-
+    echo "\section{Test 1}">>./test.tex
+    echo "\begin{table}[H]">>./test.tex
+    echo "\centering">>./test.tex
+    echo "\begin{tabular}{|c|c|}">>./test.tex
+    echo "\hline">>./test.tex
+    echo "Typ testu & A \\\ \hline">>./test.tex
 
     for ((i=2;i<$amount;i++))
     do
@@ -147,37 +152,30 @@ while read line; do
 	sed -i 's/m/\n/;s/s//' wynik.txt
 	rm -r czastmp
     	#####
-	echo -n " $i" >>./test.tex
 
-	echo "\section{Test 1}">>./test.tex
-	echo "\begin{table}[H]">>./test.tex
-	echo "\centering">>./test.tex
-	echo "\begin{tabular}{|c|c|}">>./test.tex
-	echo "\hline">>./test.tex
-	echo "Typ testu & A \\\ \hline">>./test.tex
-	echo "Rozmiar permutacji &  (zmienna) \\\ \hline">>./test.tex
 	while read linia; do
-		for czas in $linia; do
-		echo "Czas & $czas \\\ \hline">>./test.tex
-		done
+		echo "Rozmiar permutacji &  (zmienna) \\\ \hline">>./test.tex
+		echo "Czas & $linia \\\ \hline">>./test.tex
 	done < wynik.txt
-	echo "\end{tabular}">>./test.tex
-	echo "\end{table}">>./test.tex
+	
+	#xxxx
 
 	gnuplot -persist <<-EOFMarker
     		set terminal png
     		set output 'test.png'
     		plot'wynik.txt' using 1: 2
 	EOFMarker
-
-	echo "\begin{figure}[H]">>./test.tex
-	echo "\begin{center}">>./test.tex
-	echo "\includegraphics[scale=0.7]{test.png}">>./test.tex
-	echo "\end{center}">>./test.tex
-	echo "\end{figure}">>./test.tex
-	echo "\raggedright">>./test.tex
+	
 	rm wynik.txt
     done
+    echo "\end{tabular}">>./test.tex
+    echo "\end{table}">>./test.tex
+    echo "\begin{figure}[H]">>./test.tex
+    echo "\begin{center}">>./test.tex
+    echo "\includegraphics[scale=0.7]{test.png}">>./test.tex
+    echo "\end{center}">>./test.tex
+    echo "\end{figure}">>./test.tex
+    echo "\raggedright">>./test.tex
     echo "\end{document}">>./test.tex
 done < test1.conf
 pdflatex test.tex
