@@ -147,7 +147,7 @@ while read line; do
 	sed -i 's/m/\n/;s/s//' wynik.txt
 	rm -r czastmp
     	#####
-	echo -n "$i" >>./test.tex
+	echo -n " $i" >>./test.tex
 
 	echo "\section{Test 1}">>./test.tex
 	echo "\begin{table}[H]">>./test.tex
