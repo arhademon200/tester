@@ -41,19 +41,9 @@ while read line; do
     		exit 11
     	fi
     done
+    
+    rodzaj=$((${parameters[0]} + h))
     wazniejsza=$((${parameters[1]} + h))
-    if [[ $wazniejsza -gt 40 ]]
-    then
-    	echo "Zbior nie moze przekraczac 40"
-	rm -r PDF_OUTPUT
-    	exit 14
-    fi
-    if [[ $wazniejsza -lt 0 ]]
-    then
-    	echo "Nie moze byc mniejszy niz 0"
-	rm -r PDF_OUTPUT
-    	exit 15
-    fi
     
     touch test.tex
     chmod 777 test.tex
@@ -84,13 +74,12 @@ while read line; do
 
     for ((i=2;i<$amount;i++))
     do
-    	
 
     	mniejsza=$((${parameters[i]} + h))
     	rm 1.conf
 	touch 1.conf
 	chmod 777 1.conf
-	rodzaj=$((${parameters[0]} + h))
+	
 	if [[ $wazniejsza -gt 35 ]]
     	then
     		echo "Zbior nie moze przekraczac 35"
