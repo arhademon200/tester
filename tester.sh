@@ -158,6 +158,7 @@ while read line; do
 	while read linia; do
 		for czas in $linia; do
 		echo "Czas & $czas \\\ \hline">>./test.tex
+		done
 	done < wynik.txt
 	echo "\end{tabular}">>./test.tex
 	echo "\end{table}">>./test.tex
