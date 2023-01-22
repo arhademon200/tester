@@ -150,6 +150,8 @@ while read line; do
 	grep 'real' czastmp/tmp1.txt | grep -v 'user\|sys' >> wynik.txt
 	sed -i -e 's/[real \t]*//' wynik.txt
 	sed -i 's/m/\n/;s/s//' wynik.txt
+	sed -i '1{s/^.//;/^$/d}' wynik.txt
+	sed -i 's/,/ /g' wynik.txt
 	rm -r czastmp
     	#####
 
