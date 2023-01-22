@@ -4,15 +4,6 @@ then
 	echo "Nie mozna znalesc pliku konfiguracyjnego 1.conf"
 	exit 2
 fi
-needed_files=("cycle" "main" "next" "order" "parity" "previous" "square" "twoline") 
-for need in ${needed_files[@]}
-do
-	if ! [ -e $need ]
-	then
-		echo "Nie mozna znalesc wymaganego pliku $need"
-		exit 4
-	fi
-done
 
 istnieje=0
 for ((b=0 ;$istnieje==0; ))
@@ -24,10 +15,7 @@ do
 		chmod 777 ./PDF_OUTPUT/final$b.tex
 		istnieje=1
 	fi
-	
-	
 done
-
 
 echo "\documentclass{article}">>./PDF_OUTPUT/final$b.tex
 echo "\usepackage[T1]{fontenc}">>./PDF_OUTPUT/final$b.tex
@@ -104,9 +92,6 @@ while read line; do
     	exit 6
     fi
     
-    
-
-    
     echo "\section{Permutacje zbioru $dlug -elementowego}">>./PDF_OUTPUT/final$b.tex
     
     for ((i=0;i<$ilo;i++))
@@ -148,20 +133,20 @@ while read line; do
     echo "Zapis dwuliniowy &`./twoline ${parameters[0]} $org`\\\\">>./PDF_OUTPUT/final$b.tex
     echo "\midrule">>./PDF_OUTPUT/final$b.tex
     echo "Zapis cykliczny & `./cycle ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$b.tex
-     echo "\midrule">>./PDF_OUTPUT/final$b.tex
+    echo "\midrule">>./PDF_OUTPUT/final$b.tex
     echo "Kwadrat & `./square ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$b.tex
-     echo "\midrule">>./PDF_OUTPUT/final$b.tex
+    echo "\midrule">>./PDF_OUTPUT/final$b.tex
     echo "Poprzednia & `./previous ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$b.tex
-     echo "\midrule">>./PDF_OUTPUT/final$b.tex
+    echo "\midrule">>./PDF_OUTPUT/final$b.tex
     echo "Nastepna & `./next ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$b.tex
-     echo "\midrule">>./PDF_OUTPUT/final$b.tex
+    echo "\midrule">>./PDF_OUTPUT/final$b.tex
     echo "Parzystosc & `./parity ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$b.tex
-     echo "\midrule">>./PDF_OUTPUT/final$b.tex
+    echo "\midrule">>./PDF_OUTPUT/final$b.tex
     echo "Rzad & `./order ${parameters[0]} $org` \\\\">>./PDF_OUTPUT/final$b.tex
     
     echo "\bottomrule">>./PDF_OUTPUT/final$b.tex
     echo "\end{tabular}\par">>./PDF_OUTPUT/final$b.tex
-     echo "\end{center}">>./PDF_OUTPUT/final$b.tex
+    echo "\end{center}">>./PDF_OUTPUT/final$b.tex
     
     done
 done < $file 
