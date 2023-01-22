@@ -155,12 +155,14 @@ while read line; do
 	rm -r czastmp
     	#####
 
-	while read linia; do
-		echo "Rozmiar permutacji &  (zmienna) \\\ \hline">>./test.tex
-		echo "Czas & $linia \\\ \hline">>./test.tex
-	done < wynik.txt
+###############################################################################################
+
+	echo "Rozmiar permutacji &  (zmienna) \\\ \hline">>./test.tex
+	echo "Czas & $czasowy \\\ \hline">>./test.tex
 	
-	#xxxx
+	touch dane.txt
+	chmod 777 dane.txt
+	echo "$mniejsza $czasowy"
 
 	gnuplot -persist <<-EOFMarker
     		set terminal png
