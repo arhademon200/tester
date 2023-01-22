@@ -20,3 +20,4 @@ Przykładowa zawartość pliku wynik.txt: <br />
 
 # latex.sh
 Na razie szablon z założeniami jak ma być generowany plik latexowy i pdf.
+Wymaga pliku z danymi do tworzenia wykresu.
