@@ -174,4 +174,4 @@ echo "\raggedright">>./test.tex
     done
     echo "\end{document}">>./test.tex
 done < test1.conf
-    
+pdflatex test.tex
