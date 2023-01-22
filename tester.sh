@@ -4,6 +4,13 @@ then
 	echo "Nie mozna znalesc pliku konfiguracyjnego test1.conf"
 	exit 10
 fi
+if [ -e ./wynik.txt ]
+
+then
+
+	rm wynik.txt
+
+fi
 needed_files=("cycle" "main" "next" "order" "parity" "previous" "square" "twoline") 
 for need in ${needed_files[@]}
 do
