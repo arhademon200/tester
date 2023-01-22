@@ -156,8 +156,21 @@ while read line; do
 	grep 'real' czastmp/tmp1.txt | grep -v 'user\|sys' >> wynik.txt
 	sed -i -e 's/[real \t]*//' wynik.txt
 	sed -i 's/m/\n/;s/s//' wynik.txt
-	sed -i '1{s/^.//;/^$/d}' wynik.txt
-	sed -i 's/,/ /g' wynik.txt
+	
+	##
+	read min < $file
+	sec=$(sed '2q;d' wynik.txt)
+	if [ $min -eq 0 ]
+	then
+		czasowy=$sec
+	else
+    		min=$(($min*60))
+    		echo $min
+   		awk "BEGIN {print $min + $sec; exit}" >> czastmp/tmp2.txt
+    		czasowy=`cat czastmp/tmp2.txt`
+    		czasowy="${czasowy// /,}"
+	fi
+
 	rm -r czastmp
     	#####
 
