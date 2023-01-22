@@ -165,7 +165,7 @@ while read line; do
 	gnuplot -persist <<-EOFMarker
     		set terminal png
     		set output 'test.png'
-    		plot'test.txt' using 1: 2
+    		plot'wynik.txt' using 1: 2
 	EOFMarker
 
 	echo "\begin{figure}[H]">>./test.tex
