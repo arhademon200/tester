@@ -16,7 +16,6 @@ do
 	then
 
 		echo "Nie mozna znalesc wymaganego pliku $need"
-
 		exit 4
 
 	fi
@@ -57,7 +56,6 @@ while read line; do
     if ! [ $amount -eq 2 ]
     then
     	echo "Liczba parametrow jset wieksza lub mniejsza niz 2"
-	rm final.tex
     	exit 1
     fi
     
@@ -68,11 +66,6 @@ while read line; do
     	then
 
     		echo "Zbior nie moze przekraczac 35"
-
-		rm test.tex
-
-		rm -r PDF_OUTPUT
-
     		exit 14
 
     	fi
@@ -82,11 +75,6 @@ while read line; do
     	then
 
     		echo "Nie moze byc mniejszy niz 0"
-
-		rm test.tex
-
-		rm -r PDF_OUTPUT
-
     		exit 15
 
     	fi
@@ -96,11 +84,6 @@ while read line; do
     	then
 
     		echo "Zbior nie moze przekraczac 35"
-
-		rm test.tex
-
-		rm -r PDF_OUTPUT
-
     		exit 14
 
     	fi
@@ -110,11 +93,6 @@ while read line; do
     	then
 
     		echo "Nie moze byc mniejszy niz 0"
-
-		rm test.tex
-
-		rm -r PDF_OUTPUT
-
     		exit 15
 
     	fi
@@ -140,7 +118,6 @@ while read line; do
     	if ! [[ $? -eq 0 ]]
 		then
 		echo "Program allp.c sie nie wykonal"
-		rm final.tex
 		exit 9
 	fi
     else
@@ -148,7 +125,6 @@ while read line; do
     	if ! [[ $? -eq 0 ]]
 		then
 			echo "Program main.c sie nie wykonal"
-			rm final.tex
 			exit 10
 		fi
     fi
@@ -170,7 +146,6 @@ while read line; do
     if ! [[ $? -eq 0 ]]
 		then
 		echo "Program twoline sie nie wykonal"
-		rm final.tex
 		exit 9
 	fi
     echo "\midrule">>./PDF_OUTPUT/final$b.tex
@@ -178,7 +153,6 @@ while read line; do
     if ! [[ $? -eq 0 ]]
 		then
 		echo "Program cycle sie nie wykonal"
-		rm final.tex
 		exit 9
 	fi
     echo "\midrule">>./PDF_OUTPUT/final$b.tex
@@ -186,7 +160,6 @@ while read line; do
     if ! [[ $? -eq 0 ]]
 		then
 		echo "Program square sie nie wykonal"
-		rm final.tex
 		exit 9
 	fi
     echo "\midrule">>./PDF_OUTPUT/final$b.tex
@@ -194,7 +167,6 @@ while read line; do
     if ! [[ $? -eq 0 ]]
 		then
 		echo "Program previous sie nie wykonal"
-		rm final.tex
 		exit 9
 	fi
     echo "\midrule">>./PDF_OUTPUT/final$b.tex
@@ -202,7 +174,6 @@ while read line; do
     if ! [[ $? -eq 0 ]]
 		then
 		echo "Program next sie nie wykonal"
-		rm final.tex
 		exit 9
 	fi
     echo "\midrule">>./PDF_OUTPUT/final$b.tex
@@ -210,7 +181,6 @@ while read line; do
     if ! [[ $? -eq 0 ]]
 		then
 		echo "Program parity sie nie wykonal"
-		rm final.tex
 		exit 9
 	fi
     echo "\midrule">>./PDF_OUTPUT/final$b.tex
@@ -218,7 +188,6 @@ while read line; do
     if ! [[ $? -eq 0 ]]
 		then
 		echo "Program order sie nie wykonal"
-		rm final.tex
 		exit 9
 	fi
     
