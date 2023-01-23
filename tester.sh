@@ -127,21 +127,23 @@ while read line; do
     echo "\begin{document}">>./test.tex
 
     echo "\raggedright">>./test.tex
-
+    
     echo "\section{Wstęp}">>./test.tex
-
+    
     echo "\begin{itemize}">>./test.tex
-
-    echo "\item Czas rozpoczęcia:">>./test.tex
-
-    echo "\item Czas zakończenia:">>./test.tex
-
-    echo "\item Nazwa pliku konfiguracyjnego:">>./test.tex
-
-    echo "\item Lokalizacja wygenerowanych dokumentów:">>./test.tex
-
-    echo "\item Lokalizacja testera:">>./test.tex
-
+    
+    czasRozpoczecia=`date +%T`>>./test.tex
+    
+    echo "\item Czas rozpoczęcia: $czasRozpoczecia">>./test.tex
+    
+    echo "\item Nazwa pliku konfiguracyjnego: test1.conf">>./test.tex
+    
+    lokalizacja=`pwd`>>./test.tex
+    
+    echo "\item Lokalizacja testera: $lokalizacja">>./test.tex
+    
+    echo "\item Lokalizacja wygenerowanych dokumentów: $lokalizacja/PDF\_OUTPUT">>./test.tex
+    
     echo "\end{itemize}">>./test.tex
 
     echo "\section{Test 1}">>./test.tex
