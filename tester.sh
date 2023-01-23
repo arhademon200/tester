@@ -15,18 +15,45 @@ if [ -e ./test.tex ]
 then
 
 	rm test.tex
+	if ! [[ $? -eq 0 ]]
+
+		then
+
+		echo "nie udalo sie usunac test.tex"
+
+		exit 9
+
+	fi
 
 fi
 
 if [ -d PDF_OUTPUT ]; then
 
     rm -r PDF_OUTPUT
+    if ! [[ $? -eq 0 ]]
+
+		then
+
+		echo "nie udalo sie usunac PDF_OUTPUT"
+
+		exit 9
+
+	fi
 
 fi
 
 
 
 mkdir PDF_OUTPUT
+if ! [[ $? -eq 0 ]]
+
+		then
+
+		echo "nie udalo sie stworzyc PDF_OUTPUT"
+
+		exit 9
+
+	fi
 
 
 
@@ -71,6 +98,15 @@ while read line; do
     
 
     touch test.tex
+    if ! [[ $? -eq 0 ]]
+
+		then
+
+		echo "nie udalo sie stworzyc test.tex"
+
+		exit 9
+
+	fi
 
     chmod 777 test.tex
 
@@ -163,10 +199,28 @@ while read line; do
 	then
 
 		rm 1.conf
+		if ! [[ $? -eq 0 ]]
+
+			then
+
+			echo "nie udalo sie usunac 1.conf"
+
+			exit 9
+
+		fi
 
 	fi
 
 	touch 1.conf
+	if ! [[ $? -eq 0 ]]
+
+		then
+
+		echo "nie udalo sie utworzyc 1.conf"
+
+		exit 9
+
+	fi
 
 	chmod 777 1.conf
 
@@ -175,20 +229,12 @@ while read line; do
     	then
 
 		echo "$wazniejsza $mniejsza" >> 1.conf
-
 		
-
-
-
    	elif [[ $rodzaj -eq 2 ]]
 
     	then
 
 		echo "$mniejsza $wazniejsza" >> 1.conf
-
-	
-
-	
 
     	else
 
@@ -209,6 +255,15 @@ while read line; do
 	#~ time.sh:
 
     	mkdir -p czastmp
+	if ! [[ $? -eq 0 ]]
+
+		then
+
+		echo "nie udalo sie utworzyc czastmp"
+
+		exit 9
+
+	fi
 
 	{ time ./start.sh 1 ; } 2> czastmp/tmp1.txt
 
@@ -239,6 +294,19 @@ while read line; do
 	##
 
 	read min < wynik.txt
+	if ! [[ $? -eq 0 ]]
+
+		then
+
+		echo "nie udalo sie odczytac z wyniki.txt"
+
+		rm test.tex
+
+		rm -r PDF_OUTPUT
+
+		exit 9
+
+	fi
 
 	sec=$(sed '2q;d' wynik.txt)
 
@@ -297,12 +365,23 @@ while read line; do
 	
 
 	touch dane.txt
+	if ! [[ $? -eq 0 ]]
+
+		then
+
+		echo "nie udalo sie utworzyc dane.txt"
+
+		rm test.tex
+
+		rm -r PDF_OUTPUT
+
+		exit 9
+
+	fi
 
 	chmod 777 dane.txt
 
 	echo "$mniejsza $czasowy" >> dane.txt
-
-	
 
 	rm wynik.txt
 
@@ -345,3 +424,16 @@ EOFMarker
 rm dane.txt    
 
 done < test1.conf
+if ! [[ $? -eq 0 ]]
+
+		then
+
+		echo "nie udalo sie odczytac test1.conf"
+
+		rm test.tex
+
+		rm -r PDF_OUTPUT
+
+		exit 9
+
+	fi
