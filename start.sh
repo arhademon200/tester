@@ -63,6 +63,62 @@ while read line; do
     
     dlug=$((${parameters[0]} + h))
     ilo=$((${parameters[1]} + h))
+    if [[ $dlug -gt 37 ]]
+
+    	then
+
+    		echo "Zbior nie moze przekraczac 35"
+
+		rm test.tex
+
+		rm -r PDF_OUTPUT
+
+    		exit 14
+
+    	fi
+
+    	if [[ $dlug -lt 0 ]]
+
+    	then
+
+    		echo "Nie moze byc mniejszy niz 0"
+
+		rm test.tex
+
+		rm -r PDF_OUTPUT
+
+    		exit 15
+
+    	fi
+
+	if [[ $ilo -gt 200 ]]
+
+    	then
+
+    		echo "Zbior nie moze przekraczac 35"
+
+		rm test.tex
+
+		rm -r PDF_OUTPUT
+
+    		exit 14
+
+    	fi
+
+    	if [[ $ilo -lt 1 ]]
+
+    	then
+
+    		echo "Nie moze byc mniejszy niz 0"
+
+		rm test.tex
+
+		rm -r PDF_OUTPUT
+
+    		exit 15
+
+    	fi
+
     
     if [[ $ilo -eq 0 ]]
     then
