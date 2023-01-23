@@ -41,8 +41,14 @@ if [ -d PDF_OUTPUT ]; then
 	fi
 
 fi
-
-
+n=0
+for ((b=0 ;b<11;b++ ))
+do 
+	if [ -e ./test$n.png ]
+	then
+		rm test$n.png
+	fi
+done
 
 mkdir PDF_OUTPUT
 if ! [[ $? -eq 0 ]]
@@ -103,10 +109,25 @@ if ! [[ $? -eq 0 ]]
     echo "\item Lokalizacja wygenerowanych dokumentów: $lokalizacja/PDF\_OUTPUT">>./test.tex
     
     echo "\end{itemize}">>./test.tex
-
-    n=0
+    
+    h=0
 
 while read line; do
+
+    let h++
+    if [[ $h -eq 10 ]]
+
+		then
+
+		echo "za duzo lini"
+
+		rm test.tex
+
+		rm -r PDF_OUTPUT
+
+		exit 18
+
+	fi
 
     parameters=()
 
