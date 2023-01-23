@@ -170,64 +170,6 @@ while read line; do
 
 	chmod 777 1.conf
 
-	
-
-	if [[ $wazniejsza -gt 35 ]]
-
-    	then
-
-    		echo "Zbior nie moze przekraczac 35"
-
-		rm test.tex
-
-		rm -r PDF_OUTPUT
-
-    		exit 14
-
-    	fi
-
-    	if [[ $wazniejsza -lt 0 ]]
-
-    	then
-
-    		echo "Nie moze byc mniejszy niz 0"
-
-		rm test.tex
-
-		rm -r PDF_OUTPUT
-
-    		exit 15
-
-    	fi
-
-	if [[ $mniejsza -gt 35 ]]
-
-    	then
-
-    		echo "Zbior nie moze przekraczac 35"
-
-		rm test.tex
-
-		rm -r PDF_OUTPUT
-
-    		exit 14
-
-    	fi
-
-    	if [[ $mniejsza -lt 0 ]]
-
-    	then
-
-    		echo "Nie moze byc mniejszy niz 0"
-
-		rm test.tex
-
-		rm -r PDF_OUTPUT
-
-    		exit 15
-
-    	fi
-
     	if [[ $rodzaj -eq 1 ]]
 
     	then
