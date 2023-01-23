@@ -55,6 +55,54 @@ if ! [[ $? -eq 0 ]]
 
 	fi
 
+    touch test.tex
+    if ! [[ $? -eq 0 ]]
+
+		then
+
+		echo "nie udalo sie stworzyc test.tex"
+
+		exit 9
+
+	fi
+
+    chmod 777 test.tex
+
+    echo "\documentclass[11pt,twoside,a4paper]{article}">>./test.tex
+
+    echo "\usepackage[T1]{fontenc}">>./test.tex
+
+    echo "\usepackage[utf8]{inputenc}">>./test.tex
+
+    echo "\usepackage[polish]{babel}">>./test.tex
+
+    echo "\usepackage{float}">>./test.tex
+
+    echo "\restylefloat{table}">>./test.tex
+    
+    echo "\usepackage{graphicx}">>./test.tex
+
+    echo "\begin{document}">>./test.tex
+
+    echo "\raggedright">>./test.tex
+    
+    echo "\section{Wstęp}">>./test.tex
+    
+    echo "\begin{itemize}">>./test.tex
+    
+    czasRozpoczecia=`date +%T`>>./test.tex
+    
+    echo "\item Czas rozpoczęcia: $czasRozpoczecia">>./test.tex
+    
+    echo "\item Nazwa pliku konfiguracyjnego: test1.conf">>./test.tex
+    
+    lokalizacja=`pwd`>>./test.tex
+    
+    echo "\item Lokalizacja testera: $lokalizacja">>./test.tex
+    
+    echo "\item Lokalizacja wygenerowanych dokumentów: $lokalizacja/PDF\_OUTPUT">>./test.tex
+    
+    echo "\end{itemize}">>./test.tex
 
 
 while read line; do
@@ -94,59 +142,6 @@ while read line; do
     rodzaj=$((${parameters[0]} + h))
 
     wazniejsza=$((${parameters[1]} + h))
-
-    
-
-    touch test.tex
-    if ! [[ $? -eq 0 ]]
-
-		then
-
-		echo "nie udalo sie stworzyc test.tex"
-
-		exit 9
-
-	fi
-
-    chmod 777 test.tex
-
-
-
-    echo "\documentclass[11pt,twoside,a4paper]{article}">>./test.tex
-
-    echo "\usepackage[T1]{fontenc}">>./test.tex
-
-    echo "\usepackage[utf8]{inputenc}">>./test.tex
-
-    echo "\usepackage[polish]{babel}">>./test.tex
-
-    echo "\usepackage{float}">>./test.tex
-
-    echo "\restylefloat{table}">>./test.tex
-    
-    echo "\usepackage{graphicx}">>./test.tex
-
-    echo "\begin{document}">>./test.tex
-
-    echo "\raggedright">>./test.tex
-    
-    echo "\section{Wstęp}">>./test.tex
-    
-    echo "\begin{itemize}">>./test.tex
-    
-    czasRozpoczecia=`date +%T`>>./test.tex
-    
-    echo "\item Czas rozpoczęcia: $czasRozpoczecia">>./test.tex
-    
-    echo "\item Nazwa pliku konfiguracyjnego: test1.conf">>./test.tex
-    
-    lokalizacja=`pwd`>>./test.tex
-    
-    echo "\item Lokalizacja testera: $lokalizacja">>./test.tex
-    
-    echo "\item Lokalizacja wygenerowanych dokumentów: $lokalizacja/PDF\_OUTPUT">>./test.tex
-    
-    echo "\end{itemize}">>./test.tex
 
     echo "\section{Test 1}">>./test.tex
 
@@ -420,14 +415,14 @@ EOFMarker
     echo "\end{figure}">>./test.tex
 
     echo "\raggedright">>./test.tex
-
-    echo "\end{document}">>./test.tex
-
-    
+ 
 
 rm dane.txt    
 
 done < test1.conf
+
+ echo "\end{document}">>./test.tex
+
 if ! [[ $? -eq 0 ]]
 
 		then
