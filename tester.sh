@@ -146,7 +146,7 @@ while read line; do
 
     wazniejsza=$((${parameters[1]} + h))
 
-    echo "\section{Test 1}">>./test.tex
+    echo "\section{Test}">>./test.tex
 
     echo "\begin{table}[H]">>./test.tex
 
