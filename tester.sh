@@ -104,12 +104,15 @@ if ! [[ $? -eq 0 ]]
     
     echo "\end{itemize}">>./test.tex
 
+    n=0
 
 while read line; do
 
     parameters=()
 
     amount=0
+    
+    let n++
 
     for value in $line; do
 
@@ -396,7 +399,7 @@ gnuplot -persist <<-EOFMarker
 
     set terminal png
 
-    set output 'test.png'
+    set output 'test$n.png'
 
     plot'dane.txt' using 1: 2
 
@@ -408,7 +411,7 @@ EOFMarker
 
     echo "\begin{center}">>./test.tex
 
-    echo "\includegraphics[scale=0.7]{test.png}">>./test.tex
+    echo "\includegraphics[scale=0.7]{test$n.png}">>./test.tex
 
     echo "\end{center}">>./test.tex
 
