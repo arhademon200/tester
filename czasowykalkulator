@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sec=`cat czasowykat/sekundy.txt`
+b=1000
+
+gnuplot -e "print $sec*$b"

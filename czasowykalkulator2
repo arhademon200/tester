@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sed -i 's/,/./g' czasowykat/sekundy.txt
+{ ./czasowykalkulator 1 ; } 2> czasowykat/czasowyzmienna.txt
+sed -i 's/.0//g' czasowykat/czasowyzmienna.txt

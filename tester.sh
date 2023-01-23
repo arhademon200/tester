@@ -1,5 +1,8 @@
 #!/bin/bash
 
+chmod 777 czasowykalkulator
+chmod 777 czasowykalkulator2
+
 if ! [ -e ./test1.conf ]
 
 then
@@ -110,12 +113,13 @@ if ! [[ $? -eq 0 ]]
     
     echo "\end{itemize}">>./test.tex
     
-    h=0
+    p=0
 
 while read line; do
 
-    let h++
-    if [[ $h -eq 10 ]]
+    mkdir czasowykat
+    let p++
+    if [[ $p -eq 10 ]]
 
 		then
 
@@ -244,7 +248,7 @@ while read line; do
 		exit 9
 
 	fi
-
+	
 	chmod 777 1.conf
 
     	if [[ $rodzaj -eq 1 ]]
@@ -332,9 +336,8 @@ while read line; do
 	fi
 
 	sec=$(sed '2q;d' wynik.txt)
-
+	echo $sec > czasowykat/sekundy.txt
 	
-
 	czasowy=0
 
 	if [ $min -eq 0 ]
@@ -343,13 +346,14 @@ while read line; do
 
 		#czasowy=$(($czasowy*1000))
 
-		for (( g=1; $g <= 10 ; g++ ));
+		#for (( g=1; $g <= 10 ; g++ ));
 
-		do
+		#do
 
- 			 czasowy=$(($czasowy + $sec));
+ 			./czasowykalkulator2
+			czasowy=`cat czasowykat/czasowyzmienna.txt`
 
-		done
+		#done
 
 	else
 
@@ -417,13 +421,9 @@ while read line; do
     
 
 gnuplot -persist <<-EOFMarker
-
-    set terminal png
-
-    set output 'test$n.png'
-
-    plot'dane.txt' using 1: 2
-
+set terminal png
+set output 'test$n.png'
+plot 'dane.txt' using 1:2 with linespoints pt 6
 EOFMarker
 
     
@@ -441,7 +441,8 @@ EOFMarker
     echo "\raggedright">>./test.tex
  
 
-rm dane.txt    
+rm dane.txt
+rm -r czasowykat    
 
 done < test1.conf
 
