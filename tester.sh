@@ -10,26 +10,6 @@ then
 
 fi
 
-
-
-needed_files=("cycle" "main" "next" "order" "parity" "previous" "square" "twoline") 
-
-for need in ${needed_files[@]}
-
-do
-
-	if ! [ -e $need ]
-
-	then
-
-		echo "Nie mozna znalesc wymaganego pliku $need"
-
-		exit 4
-
-	fi
-
-done
-
 if [ -e ./test.tex ]
 
 then
@@ -37,8 +17,6 @@ then
 	rm test.tex
 
 fi
-
-
 
 if [ -d PDF_OUTPUT ]; then
 
