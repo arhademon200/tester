@@ -5,6 +5,24 @@ then
 	exit 2
 fi
 
+needed_files=("cycle" "main" "next" "order" "parity" "previous" "square" "twoline") 
+
+for need in ${needed_files[@]}
+
+do
+
+	if ! [ -e $need ]
+
+	then
+
+		echo "Nie mozna znalesc wymaganego pliku $need"
+
+		exit 4
+
+	fi
+
+done
+
 istnieje=0
 for ((b=0 ;$istnieje==0; ))
 do 
