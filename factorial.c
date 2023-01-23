@@ -7,7 +7,7 @@ int main(int argc,const char *const argv[])
 
     int silnia = 1;
 
-    for (int i = 1; (i <= n) && (silnia <= 50); ++i) 
+    for (int i = 1; (i <= n) && (silnia <= 200); ++i) 
     {
             silnia *= i;
     }
