@@ -123,6 +123,8 @@ while read line; do
     echo "\usepackage{float}">>./test.tex
 
     echo "\restylefloat{table}">>./test.tex
+    
+    echo "\usepackage{graphicx}">>./test.tex
 
     echo "\begin{document}">>./test.tex
 
