@@ -1,7 +1,27 @@
 #!/bin/bash
 
 chmod 777 czasowykalkulator
+if ! [[ $? -eq 0 ]]
+then
+	echo "Nie udało się przyznać uprawnień skryptom czasowykalkulator i czasowykalkulator2!"
+	exit 42
+fi
 chmod 777 czasowykalkulator2
+if ! [[ $? -eq 0 ]]
+then
+	echo "Nie udało się przyznać uprawnień skryptom czasowykalkulator i czasowykalkulator2!"
+	exit 42
+fi
+chmod 777 start.sh
+if ! [[ $? -eq 0 ]]
+then
+	echo "Nie udało się przyznać uprawnień skryptowi start.sh!"
+	exit 41
+fi
+
+if [ -d czasowykat ]; then
+	rm -r czasowykat
+fi
 
 if ! [ -e ./test1.conf ]
 
@@ -423,7 +443,7 @@ while read line; do
 gnuplot -persist <<-EOFMarker
 set terminal png
 set output 'test$n.png'
-plot 'dane.txt' using 1:2 with linespoints pt 6
+plot 'dane.txt' using 1:2 with linespoints pt 9
 EOFMarker
 
     
