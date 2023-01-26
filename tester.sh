@@ -481,3 +481,5 @@ if ! [[ $? -eq 0 ]]
 		exit 9
 
 	fi
+
+pdflatex PDF_OUTPUT/*.tex
